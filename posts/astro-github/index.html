@@ -1,0 +1,109 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.8.0"><title>使用Astro在github上写blog</title></head> <body> <h1>使用Astro在github上写blog</h1>  <p><em>添加分页、blog article、deprecated feature</em></p> <p>2025-05-29</p> <p>Written by: tdtc</p> <p>Also see <a href="https://www.cnblogs.com/xiaobin-hlj80/p/12651114.html">使用hugo在gitee上写blog</a></p>
+<h2 id="pagination">pagination</h2>
+<ul>
+<li><a href="https://github.com/ampmonteiro/astro-tutorial-blog-pagination">ampmonteiro</a></li>
+</ul>
+<h3 id="step-1">Step 1</h3>
+<p>拷贝blog(src/pages/blog)中的文件:</p>
+<ul>
+<li>pages的page目录</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>[page].astro</span></span></code></pre>
+<ul>
+<li>pages目录</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>index.astro</span></span></code></pre>
+<h3 id="step-2">Step 2</h3>
+<p>修改index.astro:</p>
+<ul>
+<li>Original</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>import BlogPost from '../../components/BlogPost.astro';</span></span>
+<span class="line"><span>import BaseLayout from '../../layouts/BaseLayout.astro';</span></span></code></pre>
+<ul>
+<li>now</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>import BlogPost from '../components/BlogPost.astro';</span></span>
+<span class="line"><span>import BaseLayout from '../layouts/BaseLayout.astro';</span></span></code></pre>
+<h3 id="step-3">Step 3</h3>
+<p>astro.config.mjs</p>
+<ul>
+<li><a href="https://docs.astro.build/en/guides/deploy/github">site</a></li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>site: "https://tdtc-hrb.github.io",</span></span>
+<span class="line"><span>base: "ops-win",</span></span></code></pre>
+<h4 id="hard-coded-urls">hard-coded URLs</h4>
+<ul>
+<li><code>[page].astro</code></li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>&#x3C;a href="/blog">First&#x3C;/a></span></span></code></pre>
+<p>Replace with</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>&#x3C;a href={baseUrl} >First&#x3C;/a></span></span></code></pre>
+<ul>
+<li>index.astro</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>  &#x3C;a href="/blog/2">Next&#x3C;/a></span></span></code></pre>
+<p>Replace with</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>&#x3C;a href={baseUrl + '/page/2'} >First&#x3C;/a></span></span></code></pre>
+<h2 id="blog-article">blog article</h2>
+<ul>
+<li>Required</li>
+<li>option</li>
+</ul>
+<h3 id="required">Required</h3>
+<ul>
+<li>layout</li>
+<li>title</li>
+<li>date</li>
+</ul>
+<h3 id="option">option</h3>
+<ul>
+<li>description</li>
+<li>author</li>
+<li>image</li>
+<li>tags</li>
+</ul>
+<h3 id="row-limit">row limit</h3>
+<ul>
+<li><code>[page].astro</code></li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>return paginate(all, { pageSize: 8 });</span></span></code></pre>
+<ul>
+<li>index.astro</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>const allPosts = (Object.values(import.meta.glob('../../pages/posts/*.md', { eager: true }))).slice(</span></span>
+<span class="line"><span>  0,</span></span>
+<span class="line"><span>  8</span></span>
+<span class="line"><span>);</span></span></code></pre>
+<h2 id="deprecated-feature">deprecated feature</h2>
+<ul>
+<li>Astro.glob</li>
+</ul>
+<h3 id="astroglob"><a href="https://docs.astro.build/en/guides/upgrade-to/v5/#deprecated-astroglob">astroglob</a></h3>
+<ul>
+<li>index.astro<br>
+Use</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>await Astro.glob('../../pages/posts/*.md');</span></span></code></pre>
+<p>instead of</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Object.values(import.meta.glob('../pages/posts/*.md', { eager: true }))</span></span></code></pre>
+<ul>
+<li><code>[page].astro</code><br>
+Use</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>await Astro.glob('../../pages/posts/*.md');</span></span></code></pre>
+<p>instead of</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Object.values(import.meta.glob('../../pages/posts/*.md', { eager: true }));</span></span></code></pre>
+<h2 id="run">Run</h2>
+<ul>
+<li>install</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>npm install</span></span></code></pre>
+<ul>
+<li>build</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>npm run build</span></span></code></pre>
+<ul>
+<li>preview</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>npm run preview</span></span></code></pre>  <footer> <a href="https://tdtc-hrb.github.io/blog-frontend">blog-frontend</a> <a href="https://tdtc-hrb.github.io/com-vc">com-vc</a> <a href="https://tdtc-hrb.github.io/css-tws">css-tws</a> <a href="https://tdtc-hrb.github.io/ops-win">ops-win</a> </footer> </body></html>
