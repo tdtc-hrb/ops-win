@@ -1,54 +1,20 @@
-<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.8.0"><title>Microsoft Visual C++ 及 Windows SDK</title></head> <body> <h1>Microsoft Visual C++ 及 Windows SDK</h1>  <p><em>After vs2022 17.12, the main productivity for VC</em></p> <p>2025-02-24</p> <p>Written by: xiaobin</p> <p>These options are available in <a href="https://tdtc-hrb.github.io/ops-win/posts/post-6">Visual Studio 2017 及以上版本的在线下载</a></p>
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.12.6"><title>Microsoft Visual C++ 及 Windows SDK</title></head> <body> <h1>Microsoft Visual C++ 及 Windows SDK</h1>  <p><em>After vs2022 17.12, the main productivity for VC</em></p> <p>2025-02-24</p> <p>Written by: xiaobin</p> <p>These options are available in <a href="https://tdtc-hrb.github.io/ops-win/posts/post-6">Visual Studio 在线</a></p>
 <h2 id="vc">VC</h2>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>--add Microsoft.VisualStudio.Component.VC.CoreIde `</span></span>
 <span class="line"><span>--add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 `</span></span>
 <span class="line"><span>--add Microsoft.VisualStudio.Component.VC.Redist.14.Latest `</span></span></code></pre>
+<h3 id="windows-sdk"><a href="https://learn.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-build-tools">Windows SDK</a></h3>
 <ul>
-<li>MFC</li>
+<li>win10</li>
 </ul>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>--add Microsoft.VisualStudio.Component.VC.ATLMFC `</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>--add Microsoft.VisualStudio.Component.Windows10SDK.19041 `</span></span></code></pre>
 <ul>
-<li>ATL</li>
+<li>win11</li>
 </ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>--add Microsoft.VisualStudio.Component.Windows11SDK.26100 `</span></span></code></pre>
+<h3 id="atl">ATL</h3>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>--add Microsoft.VisualStudio.ComponentGroup.NativeDesktop.Core `</span></span>
 <span class="line"><span>--add Microsoft.VisualStudio.Component.VC.ATL `</span></span>
 <span class="line"><span>--add Microsoft.VisualStudio.Workload.NativeDesktop `</span></span></code></pre>
-<h2 id="windows-sdk">Windows SDK</h2>
-<p>Windows LTS:</p>
-<ul>
-<li>Windows 8.1</li>
-<li>Windows 10 1607</li>
-</ul>
-<blockquote>
-<p>OS build 14393</p>
-</blockquote>
-<ul>
-<li>Windows 10 1809</li>
-</ul>
-<blockquote>
-<p>OS build 17763</p>
-</blockquote>
-<ul>
-<li>Windows 10 21H2</li>
-</ul>
-<blockquote>
-<p>OS build 19044</p>
-</blockquote>
-<ul>
-<li>Windows 11 24H2</li>
-</ul>
-<blockquote>
-<p>OS build 26100</p>
-</blockquote>
-<h3 id="previous-versions"><a href="https://learn.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2017/install/workload-component-id-vs-build-tools?view=vs-2017">previous versions</a></h3>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Microsoft.VisualStudio.Component.Windows81SDK</span></span>
-<span class="line"><span>Microsoft.VisualStudio.Component.Windows10SDK.14393</span></span></code></pre>
-<h3 id="current-versions">[current versions]</h3>
-<ul>
-<li><a href="https://learn.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-build-tools?view=vs-2019">Visual Studio 2019</a></li>
-</ul>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Microsoft.VisualStudio.Component.Windows10SDK.19041</span></span></code></pre>
-<ul>
-<li><a href="https://learn.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-build-tools?view=vs-2022">Visual Studio 2022</a></li>
-</ul>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Microsoft.VisualStudio.Component.Windows11SDK.26100</span></span></code></pre>  <footer> <a href="https://tdtc-hrb.github.io/blog-frontend">blog-frontend</a> <a href="https://tdtc-hrb.github.io/com-vc">com-vc</a> <a href="https://tdtc-hrb.github.io/css-tws">css-tws</a> <a href="https://tdtc-hrb.github.io/ops-win">ops-win</a> </footer> </body></html>
+<h2 id="mfc">MFC</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>--add Microsoft.VisualStudio.Component.VC.ATLMFC `</span></span></code></pre>  <footer> <a href="https://tdtc-hrb.github.io/blog-frontend">blog-frontend</a> <a href="https://tdtc-hrb.github.io/com-vc">com-vc</a> <a href="https://tdtc-hrb.github.io/css-tws">css-tws</a> <a href="https://tdtc-hrb.github.io/ops-win">ops-win</a> </footer> </body></html>
