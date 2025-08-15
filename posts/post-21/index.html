@@ -1,7 +1,20 @@
-<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.12.8"><title>Clang/LLVM support in Visual Studio</title></head> <body> <h1>Clang/LLVM support in Visual Studio</h1>  <p><em>Visual Studio 2019(v16.7) 及以上版本</em></p> <p>2025-02-24</p> <p>Written by: xiaobin</p> <ul>
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.13.0"><title>Clang/LLVM support in Visual Studio</title></head> <body> <h1>Clang/LLVM support in Visual Studio</h1>  <p><em>Visual Studio 2019(v16.7) 及以上版本</em></p> <p>2025-08-14</p> <p>Written by: xiaobin</p> <ul>
 <li><a href="https://clang.llvm.org/get_started.html">Visual Studio 2019 16.7 or later</a></li>
-<li><a href="https://tdtc-hrb.github.io/ops-win/posts/post-6">Visual Studio 在线</a></li>
+<li><a href="https://visualstudio.microsoft.com/vs/community">Visual Studio 在线</a></li>
 </ul>
+<h2 id="vc">VC</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>--add Microsoft.VisualStudio.Component.VC.CoreIde `</span></span>
+<span class="line"><span>--add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 `</span></span>
+<span class="line"><span>--add Microsoft.VisualStudio.Component.VC.Redist.14.Latest `</span></span></code></pre>
+<h3 id="windows-sdk"><a href="https://learn.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-build-tools">Windows SDK</a></h3>
+<ul>
+<li>win10</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>--add Microsoft.VisualStudio.Component.Windows10SDK.19041 `</span></span></code></pre>
+<ul>
+<li>win11</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>--add Microsoft.VisualStudio.Component.Windows11SDK.26100 `</span></span></code></pre>
 <h3 id="clangllvm-support-in-visual-studio"><a href="https://learn.microsoft.com/en-us/cpp/build/clang-support-msbuild">Clang/LLVM support in Visual Studio</a></h3>
 <ul>
 <li>C++ Clang tools for Windows</li>
