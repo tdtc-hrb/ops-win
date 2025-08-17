@@ -1,8 +1,20 @@
-<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.13.0"><title>Clang/LLVM support in Visual Studio</title></head> <body> <h1>Clang/LLVM support in Visual Studio</h1>  <p><em>Visual Studio 2019(v16.7) 及以上版本</em></p> <p>2025-08-14</p> <p>Written by: xiaobin</p> <ul>
-<li><a href="https://clang.llvm.org/get_started.html">Visual Studio 2019 16.7 or later</a></li>
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.13.2"><title>Clang/LLVM support in Visual Studio Code</title></head> <body> <h1>Clang/LLVM support in Visual Studio Code</h1>  <p><em>Visual Studio 2019(v16.7) 及以上版本</em></p> <p>2025-08-17</p> <p>Written by: xiaobin</p> <ul>
 <li><a href="https://visualstudio.microsoft.com/vs/community">Visual Studio 在线</a></li>
+<li><a href="https://github.com/llvm/llvm-project/releases">clang</a></li>
+<li><a href="https://github.com/Kitware/CMake/releases">cmake</a></li>
+<li><a href="https://github.com/ninja-build/ninja/releases">ninja-build</a></li>
+<li>Visual Studio Code - CMake-tools plugin</li>
 </ul>
-<h2 id="vc">VC</h2>
+<h2 id="msvc"><a href="https://learn.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-build-tools">msvc</a></h2>
+<ul>
+<li>UCRT</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>--add Microsoft.Component.VC.Runtime.UCRTSDK `</span></span></code></pre>
+<ul>
+<li>Vcpkg</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>--add Microsoft.VisualStudio.Component.Vcpkg `</span></span></code></pre>
+<h3 id="vc-component">VC Component</h3>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>--add Microsoft.VisualStudio.Component.VC.CoreIde `</span></span>
 <span class="line"><span>--add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 `</span></span>
 <span class="line"><span>--add Microsoft.VisualStudio.Component.VC.Redist.14.Latest `</span></span></code></pre>
@@ -17,15 +29,53 @@
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>--add Microsoft.VisualStudio.Component.Windows11SDK.26100 `</span></span></code></pre>
 <h3 id="clangllvm-support-in-visual-studio"><a href="https://learn.microsoft.com/en-us/cpp/build/clang-support-msbuild">Clang/LLVM support in Visual Studio</a></h3>
 <ul>
-<li>C++ Clang tools for Windows</li>
-</ul>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Microsoft.VisualStudio.ComponentGroup.NativeDesktop.Llvm.Clang</span></span></code></pre>
-<p>includes:</p>
-<ul>
-<li>C++ Clang Compiler for Windows</li>
-</ul>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Microsoft.VisualStudio.Component.VC.Llvm.Clang</span></span></code></pre>
-<ul>
 <li>C++ Clang-cl for v143 build tools (x64/x86)</li>
 </ul>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Microsoft.VisualStudio.Component.VC.Llvm.ClangToolset</span></span></code></pre>  <footer> <a href="https://tdtc-hrb.github.io/blog-frontend">blog-frontend</a> <a href="https://tdtc-hrb.github.io/com-vc">com-vc</a> <a href="https://tdtc-hrb.github.io/css-tws">css-tws</a> <a href="https://tdtc-hrb.github.io/ops-win">ops-win</a> </footer> </body></html>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Microsoft.VisualStudio.Component.VC.Llvm.ClangToolset</span></span></code></pre>
+<h2 id="project">project</h2>
+<p>├── .vscode
+│   ├── cmake-kits.json
+├── Circular.cpp
+├── Circular.h
+├── testCir2.cpp
+├── CMakeLists.txt</p>
+<h3 id="project-kits"><a href="https://github.com/microsoft/vscode-cmake-tools/blob/main/docs/kits.md#project-kits">Project kits</a></h3>
+<ul>
+<li>.vscode/cmake-kits.json</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>[</span></span>
+<span class="line"><span>	{</span></span>
+<span class="line"><span>	  "name": "Clang-cl toolchain vcpkg",</span></span>
+<span class="line"><span>	  "compilers": {</span></span>
+<span class="line"><span>		"C": "C:/LLVM/bin/clang-cl.exe",</span></span>
+<span class="line"><span>		"CXX": "C:/LLVM/bin/clang-cl.exe"</span></span>
+<span class="line"><span>	  },</span></span>
+<span class="line"><span>	  "toolchainFile": "C:/vcpkg/scripts/buildsystems/vcpkg.cmake",</span></span>
+<span class="line"><span>	  "environmentSetupScript": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Auxiliary\\Build\\vcvars64.bat",</span></span>
+<span class="line"><span>	  "isTrusted": true</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span>]</span></span></code></pre>
+<h3 id="src">src</h3>
+<ul>
+<li><a href="https://tdtc-hrb.github.io/csdn/post/c-console_app">source files</a></li>
+<li>CMakeLists.txt</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>cmake_minimum_required(VERSION 3.23)</span></span>
+<span class="line"><span>project(mytest CXX)</span></span>
+<span class="line"><span>add_executable(testCir2 testCir2.cpp Circular.cpp)</span></span></code></pre>
+<h3 id="build">build</h3>
+<ul>
+<li>Terminal</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>cmake --build build --config Debug --target ALL_BUILD -j 8 --</span></span></code></pre>
+<ul>
+<li><a href="https://github.com/microsoft/vscode-cmake-tools/blob/main/docs/build.md">VS Code command pallette</a></li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>CMake: Build Target</span></span></code></pre>
+<p>Then, select “ALL_BUILD” and press Enter.</p>
+<h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://clang.llvm.org/get_started.html">Visual Studio 2019 16.7 or later</a></li>
+<li><a href="https://www.reddit.com/r/cpp_questions/comments/1j6fcjg/how_do_i_install_latest_clang_for_vscode_on/?rdt=60458">How do I install latest Clang for VSCode? </a></li>
+<li><a href="https://github.com/microsoft/vscode-cmake-tools/issues/2391">cmake lists</a></li>
+</ul>  <footer> <a href="https://tdtc-hrb.github.io/blog-frontend">blog-frontend</a> <a href="https://tdtc-hrb.github.io/com-vc">com-vc</a> <a href="https://tdtc-hrb.github.io/css-tws">css-tws</a> <a href="https://tdtc-hrb.github.io/ops-win">ops-win</a> </footer> </body></html>
