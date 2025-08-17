@@ -1,43 +1,30 @@
-<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.13.2"><title>Clang/LLVM support in Visual Studio Code</title></head> <body> <h1>Clang/LLVM support in Visual Studio Code</h1>  <p><em>Visual Studio 2019(v16.7) 及以上版本</em></p> <p>2025-08-17</p> <p>Written by: xiaobin</p> <ul>
-<li><a href="https://visualstudio.microsoft.com/vs/community">Visual Studio 在线</a></li>
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.13.2"><title>Clang/LLVM support in Visual Studio Code</title></head> <body> <h1>Clang/LLVM support in Visual Studio Code</h1>  <p><em>Visual Studio 2019(v16.7) 及以上版本</em></p> <p>2025-08-18</p> <p>Written by: xiaobin</p> <ul>
 <li><a href="https://github.com/llvm/llvm-project/releases">clang</a></li>
 <li><a href="https://github.com/Kitware/CMake/releases">cmake</a></li>
 <li><a href="https://github.com/ninja-build/ninja/releases">ninja-build</a></li>
 <li>Visual Studio Code - CMake-tools plugin</li>
 </ul>
-<h2 id="msvc"><a href="https://learn.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-build-tools">msvc</a></h2>
+<h2 id="msvc"><a href="https://visualstudio.microsoft.com/vs/community">msvc</a></h2>
+<p>Individual components:</p>
 <ul>
-<li>UCRT</li>
+<li>MSBuild support for LLVM(clang-cl) toolset</li>
+<li>Windows Universal C Runtime</li>
 </ul>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>--add Microsoft.Component.VC.Runtime.UCRTSDK `</span></span></code></pre>
+<h3 id="desktop-development-with-c">Desktop development with C++</h3>
+<blockquote>
+<p>optional</p>
+</blockquote>
 <ul>
-<li>Vcpkg</li>
+<li>MSVC v143 - VS 2022 C++ x64/x86 build tools(Latest)</li>
+<li>vcpkg package manager</li>
+<li>Windows 10 SDK(10.0.19041.0)</li>
 </ul>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>--add Microsoft.VisualStudio.Component.Vcpkg `</span></span></code></pre>
-<h3 id="vc-component">VC Component</h3>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>--add Microsoft.VisualStudio.Component.VC.CoreIde `</span></span>
-<span class="line"><span>--add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 `</span></span>
-<span class="line"><span>--add Microsoft.VisualStudio.Component.VC.Redist.14.Latest `</span></span></code></pre>
-<h3 id="windows-sdk"><a href="https://learn.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-build-tools">Windows SDK</a></h3>
-<ul>
-<li>win10</li>
-</ul>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>--add Microsoft.VisualStudio.Component.Windows10SDK.19041 `</span></span></code></pre>
-<ul>
-<li>win11</li>
-</ul>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>--add Microsoft.VisualStudio.Component.Windows11SDK.26100 `</span></span></code></pre>
-<h3 id="clangllvm-support-in-visual-studio"><a href="https://learn.microsoft.com/en-us/cpp/build/clang-support-msbuild">Clang/LLVM support in Visual Studio</a></h3>
-<ul>
-<li>C++ Clang-cl for v143 build tools (x64/x86)</li>
-</ul>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Microsoft.VisualStudio.Component.VC.Llvm.ClangToolset</span></span></code></pre>
 <h2 id="project">project</h2>
-<p>├── .vscode
-│   ├── cmake-kits.json
-├── Circular.cpp
-├── Circular.h
-├── testCir2.cpp
+<p>├── .vscode<br>
+│   ├── cmake-kits.json<br>
+├── Circular.cpp<br>
+├── Circular.h<br>
+├── testCir2.cpp<br>
 ├── CMakeLists.txt</p>
 <h3 id="project-kits"><a href="https://github.com/microsoft/vscode-cmake-tools/blob/main/docs/kits.md#project-kits">Project kits</a></h3>
 <ul>
