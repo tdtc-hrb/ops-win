@@ -2,6 +2,7 @@
 <li><a href="https://github.com/llvm/llvm-project/releases">clang</a></li>
 <li><a href="https://github.com/Kitware/CMake/releases">cmake</a><br>
 <a href="https://llvm.org/docs/GettingStartedVS.html">Visual Studio 2022 will require CMake Version 3.21 or later</a></li>
+<li><a href="https://github.com/ninja-build/ninja/releases">ninja-build</a></li>
 <li>Visual Studio Code - CMake-tools plugin</li>
 </ul>
 <h3 id="msvc"><a href="https://visualstudio.microsoft.com/vs/community">msvc</a></h3>
@@ -10,6 +11,8 @@
 <li>MSBuild support for LLVM(clang-cl) toolset</li>
 <li>Windows Universal C Runtime</li>
 </ul>
+<p>About: <a href="https://clang.llvm.org/docs/UsersManual.html#clang-cl">clang-cl</a> is an alternative command-line interface to Clang,
+designed for compatibility with the Visual C++ compiler, cl.exe.</p>
 <h4 id="desktop-development-with-c">Desktop development with C++</h4>
 <p>optional:</p>
 <ul>
@@ -32,16 +35,23 @@
 <span class="line"><span>add_executable(testCir2 testCir2.cpp Circular.cpp)</span></span></code></pre>
 <h3 id="build">build</h3>
 <ul>
-<li>kits</li>
+<li>Open the Command Palette (Ctrl+Shift+P) and run</li>
 </ul>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>CMake Scan for Kits</span></span></code></pre>
-<h4 id="build-all-projects">Build all projects</h4>
-<p>right click “CMakeLists.txt”,</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>CMake: Select a Kit</span></span></code></pre>
+<ul>
+<li>Select the compiler you want to use.</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Clang-cl &#x3C;version> x86_64-pc-windows-msvc</span></span></code></pre>
+<p>These names are stored in “cmake-tools-kits.json”</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>%USERPROFILE%\AppData\Local\CMakeTools</span></span></code></pre>
+<ul>
+<li>Build all projects
+right click “CMakeLists.txt”,</li>
+</ul>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Build all projects</span></span></code></pre>
-<p>choose:</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Visual Studio Community 2022 Release - amd64</span></span></code></pre>
 <h2 id="ref">Ref</h2>
 <ul>
 <li><a href="https://clang.llvm.org/get_started.html">Getting Started: Building and Running Clang</a></li>
+<li><a href="https://code.visualstudio.com/docs/cpp/cmake-linux">Get started with CMake Tools on Linux</a></li>
 <li><a href="https://www.reddit.com/r/cpp_questions/comments/1j6fcjg/how_do_i_install_latest_clang_for_vscode_on/?rdt=60458">How do I install latest Clang for VSCode? </a></li>
 </ul>  <footer> <a href="https://tdtc-hrb.github.io/blog-frontend">blog-frontend</a> <a href="https://tdtc-hrb.github.io/com-vc">com-vc</a> <a href="https://tdtc-hrb.github.io/css-tws">css-tws</a> <a href="https://tdtc-hrb.github.io/ops-win">ops-win</a> </footer> </body></html>
