@@ -1,68 +1,47 @@
-<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.13.2"><title>Clang/LLVM support in Visual Studio Code</title></head> <body> <h1>Clang/LLVM support in Visual Studio Code</h1>  <p><em>Visual Studio 2019(v16.7) 及以上版本</em></p> <p>2025-08-18</p> <p>Written by: xiaobin</p> <ul>
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.13.2"><title>latest Clang for VSCode</title></head> <body> <h1>latest Clang for VSCode</h1>  <p><em>Standalone Cmake and Clang in VS Code</em></p> <p>2025-08-18</p> <p>Written by: xiaobin</p> <ul>
 <li><a href="https://github.com/llvm/llvm-project/releases">clang</a></li>
-<li><a href="https://github.com/Kitware/CMake/releases">cmake</a></li>
-<li><a href="https://github.com/ninja-build/ninja/releases">ninja-build</a></li>
+<li><a href="https://github.com/Kitware/CMake/releases">cmake</a><br>
+<a href="https://llvm.org/docs/GettingStartedVS.html">Visual Studio 2022 will require CMake Version 3.21 or later</a></li>
 <li>Visual Studio Code - CMake-tools plugin</li>
 </ul>
-<h2 id="msvc"><a href="https://visualstudio.microsoft.com/vs/community">msvc</a></h2>
+<h3 id="msvc"><a href="https://visualstudio.microsoft.com/vs/community">msvc</a></h3>
 <p>Individual components:</p>
 <ul>
 <li>MSBuild support for LLVM(clang-cl) toolset</li>
 <li>Windows Universal C Runtime</li>
 </ul>
-<h3 id="desktop-development-with-c">Desktop development with C++</h3>
-<blockquote>
-<p>optional</p>
-</blockquote>
+<h4 id="desktop-development-with-c">Desktop development with C++</h4>
+<p>optional:</p>
 <ul>
 <li>MSVC v143 - VS 2022 C++ x64/x86 build tools(Latest)</li>
 <li>vcpkg package manager</li>
 <li>Windows 10 SDK(10.0.19041.0)</li>
 </ul>
 <h2 id="project">project</h2>
-<p>├── .vscode<br>
-│   ├── cmake-kits.json<br>
-├── Circular.cpp<br>
+<p>├── Circular.cpp<br>
 ├── Circular.h<br>
 ├── testCir2.cpp<br>
 ├── CMakeLists.txt</p>
-<h3 id="project-kits"><a href="https://github.com/microsoft/vscode-cmake-tools/blob/main/docs/kits.md#project-kits">Project kits</a></h3>
-<ul>
-<li>.vscode/cmake-kits.json</li>
-</ul>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>[</span></span>
-<span class="line"><span>	{</span></span>
-<span class="line"><span>	  "name": "Clang-cl toolchain vcpkg",</span></span>
-<span class="line"><span>	  "compilers": {</span></span>
-<span class="line"><span>		"C": "C:/LLVM/bin/clang-cl.exe",</span></span>
-<span class="line"><span>		"CXX": "C:/LLVM/bin/clang-cl.exe"</span></span>
-<span class="line"><span>	  },</span></span>
-<span class="line"><span>	  "toolchainFile": "C:/vcpkg/scripts/buildsystems/vcpkg.cmake",</span></span>
-<span class="line"><span>	  "environmentSetupScript": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Auxiliary\\Build\\vcvars64.bat",</span></span>
-<span class="line"><span>	  "isTrusted": true</span></span>
-<span class="line"><span>	}</span></span>
-<span class="line"><span>]</span></span></code></pre>
 <h3 id="src">src</h3>
 <ul>
 <li><a href="https://tdtc-hrb.github.io/csdn/post/c-console_app">source files</a></li>
-<li>CMakeLists.txt</li>
+<li><a href="https://github.com/microsoft/vscode-cmake-tools/issues/2391">CMakeLists.txt</a></li>
 </ul>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>cmake_minimum_required(VERSION 3.23)</span></span>
 <span class="line"><span>project(mytest CXX)</span></span>
 <span class="line"><span>add_executable(testCir2 testCir2.cpp Circular.cpp)</span></span></code></pre>
 <h3 id="build">build</h3>
 <ul>
-<li>Terminal</li>
+<li>kits</li>
 </ul>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>cmake --build build --config Debug --target ALL_BUILD -j 8 --</span></span></code></pre>
-<ul>
-<li><a href="https://github.com/microsoft/vscode-cmake-tools/blob/main/docs/build.md">VS Code command pallette</a></li>
-</ul>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>CMake: Build Target</span></span></code></pre>
-<p>Then, select “ALL_BUILD” and press Enter.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>CMake Scan for Kits</span></span></code></pre>
+<h4 id="build-all-projects">Build all projects</h4>
+<p>right click “CMakeLists.txt”,</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Build all projects</span></span></code></pre>
+<p>choose:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Visual Studio Community 2022 Release - amd64</span></span></code></pre>
 <h2 id="ref">Ref</h2>
 <ul>
-<li><a href="https://clang.llvm.org/get_started.html">Visual Studio 2019 16.7 or later</a></li>
+<li><a href="https://clang.llvm.org/get_started.html">Getting Started: Building and Running Clang</a></li>
 <li><a href="https://www.reddit.com/r/cpp_questions/comments/1j6fcjg/how_do_i_install_latest_clang_for_vscode_on/?rdt=60458">How do I install latest Clang for VSCode? </a></li>
-<li><a href="https://github.com/microsoft/vscode-cmake-tools/issues/2391">cmake lists</a></li>
 </ul>  <footer> <a href="https://tdtc-hrb.github.io/blog-frontend">blog-frontend</a> <a href="https://tdtc-hrb.github.io/com-vc">com-vc</a> <a href="https://tdtc-hrb.github.io/css-tws">css-tws</a> <a href="https://tdtc-hrb.github.io/ops-win">ops-win</a> </footer> </body></html>
