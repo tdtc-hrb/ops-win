@@ -1,0 +1,53 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.13.3"><title>WinRE</title></head> <body> <h1>WinRE</h1>  <p><em>update problem, error (0x80070643)</em></p> <p>2024-11-30</p> <p>Written by: xiaobin</p> <ul>
+<li><a href="https://answers.microsoft.com/en-us/windows/forum/all/kb5034441-update-problem-error-0x80070643/0821b603-9707-4587-9da5-e5809cac3779">update problem, error (0x80070643).</a><br>
+Required size: ≈750Mb</li>
+</ul>
+<h3 id="kb5028997"><a href="https://support.microsoft.com/en-us/topic/kb5028997-instructions-to-manually-resize-your-partition-to-install-the-winre-update-400faa27-9343-461c-ada9-24c8229763bf">KB5028997</a></h3>
+<ul>
+<li>To disable the WinRE</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>reagentc /disable</span></span></code></pre>
+<ul>
+<li>diskpart tool</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>diskpart</span></span></code></pre>
+<ul>
+<li>To re-enable WinRE</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>reagentc /enable</span></span></code></pre>
+<h4 id="resize-winre-partition">resize WinRE partition</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>sel disk 0</span></span>
+<span class="line"><span>list part</span></span></code></pre>
+<p>To select the OS partition:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>sel part 3</span></span>
+<span class="line"><span>shrink desired=250 minimum=250</span></span></code></pre>
+<h4 id="del-winre-partition">del WinRE partition</h4>
+<blockquote>
+<p>tpye: Recovery</p>
+</blockquote>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>sel part 4</span></span>
+<span class="line"><span>delete partition override</span></span></code></pre>
+<h4 id="create-a-new-recovery-partition">Create a new recovery partition</h4>
+<blockquote>
+<p>GPT</p>
+</blockquote>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>create partition primary id=de94bba4-06d1-4d40-a16a-bfd50179d6ac</span></span>
+<span class="line"><span>format quick fs=ntfs label="Windows RE"</span></span>
+<span class="line"><span>exit</span></span></code></pre>
+<h3 id="lost-winre">lost WinRE</h3>
+<p>If you formatted, merged or deleted the “Recovery” disk partition,
+then:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>The Windows RE image was not found.</span></span></code></pre>
+<p>set path and enable:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>reagentc /setreimage /path C:\Recovery\WindowsRE</span></span>
+<span class="line"><span>reagentc /enable</span></span></code></pre>
+<h4 id="extract-winrewim">Extract Winre.wim</h4>
+<p>Extract Winre.wim from install.wim.</p>
+<ul>
+<li>install.wim</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>*.iso\sources</span></span></code></pre>
+<ul>
+<li>Winre.win</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Windows\System32\Recovery\</span></span></code></pre>  <footer> <a href="https://tdtc-hrb.github.io/blog-frontend">blog-frontend</a> <a href="https://tdtc-hrb.github.io/com-vc">com-vc</a> <a href="https://tdtc-hrb.github.io/css-tws">css-tws</a> <a href="https://tdtc-hrb.github.io/ops-win">ops-win</a> </footer> </body></html>

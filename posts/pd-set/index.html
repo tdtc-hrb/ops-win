@@ -1,0 +1,36 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.13.3"><title>PowerDesigner设置</title></head> <body> <h1>PowerDesigner设置</h1>  <p><em>PowerDesigner设置</em></p> <p>2025-04-29</p> <p>Written by: xiaobin</p> <h1 id="gen-pdm">Gen pdm</h1>
+<blockquote>
+<p>need JAVA_HOME(x86)</p>
+</blockquote>
+<p>CDM-〉PDM转换的时候提示属性错误，
+请把PDM GENERATION OPTIONS中的Check model钩取消掉.</p>
+<h2 id="setup-connection-profile">setup connection profile</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">jdbc</span><span style="color:#9ECBFF"> driver</span><span style="color:#9ECBFF"> class:</span><span style="color:#9ECBFF"> com.mysql.jdbc.Driver</span></span>
+<span class="line"><span style="color:#B392F0">jdbc</span><span style="color:#9ECBFF"> connection</span><span style="color:#9ECBFF"> url:</span><span style="color:#9ECBFF"> jdbc:mysql://106.14.141.40:3306/crm</span></span>
+<span class="line"><span style="color:#B392F0">jdbc</span><span style="color:#9ECBFF"> driver</span><span style="color:#9ECBFF"> jar</span><span style="color:#9ECBFF"> file:</span><span style="color:#9ECBFF"> D:</span><span style="color:#79B8FF">\w</span><span style="color:#9ECBFF">ar</span><span style="color:#79B8FF">\c</span><span style="color:#9ECBFF">as-server</span><span style="color:#79B8FF">\l</span><span style="color:#9ECBFF">ib</span><span style="color:#79B8FF">\m</span><span style="color:#9ECBFF">ysql-connector-java-5.1.49.jar</span></span></code></pre>
+<h2 id="gen-pdm-1">gen pdm</h2>
+<ul>
+<li>
+<p>connect database</p>
+</li>
+<li>
+<p>reverse<br>
+File -> Reverse engineer</p>
+</li>
+</ul>
+<h2 id="powerdesigner设置code和name不联动的方法">PowerDesigner设置code和name不联动的方法</h2>
+<p>tool->general option ->dialog<br>
+”Name to code mirroring”勾号取掉</p>
+<h2 id="同名问题">同名问题</h2>
+<p>“tool”-〉“Model Option”-〉“Model Setting”<br>
+“Data Item”中的复选框<br>
+“Unique code”和”Allow reuse”取消掉。</p>
+<h2 id="大小写问题"><a href="https://stackoverflow.com/questions/1174183/powerdesigner-prevent-db-name-to-be-uppercase-in-generated-sql">大小写问题</a></h2>
+<ol>
+<li>Right-click on an empty spot in the model area.</li>
+<li>Select “Model Options…” from the context menu.</li>
+<li>Select “Naming Convention” from the tree.</li>
+<li>Select “Code” from the tab group.</li>
+<li>Select “Mixed case” beside “Character case”.</li>
+<li>Click OK.</li>
+</ol>  <footer> <a href="https://tdtc-hrb.github.io/blog-frontend">blog-frontend</a> <a href="https://tdtc-hrb.github.io/com-vc">com-vc</a> <a href="https://tdtc-hrb.github.io/css-tws">css-tws</a> <a href="https://tdtc-hrb.github.io/ops-win">ops-win</a> </footer> </body></html>

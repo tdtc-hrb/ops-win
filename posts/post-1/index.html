@@ -1,0 +1,36 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.13.3"><title>disabled Windows feature</title></head> <body> <h1>disabled Windows feature</h1>  <p><em>禁止Windows的一些功能</em></p> <p>2025-01-01</p> <p>Written by: xiaobin</p> <h2 id="delivery-optimization">Delivery Optimization</h2>
+<blockquote>
+<p>windows 10 2004+
+startup -> settings: Update &#x26; security:</p>
+</blockquote>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Allow downloads from other PCs : off</span></span></code></pre>
+<h3 id="limit">Limit</h3>
+<blockquote>
+<p>Advanced options
+set minimum</p>
+</blockquote>
+<h4 id="download-settings">Download settings</h4>
+<ul>
+<li>background</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>5%</span></span></code></pre>
+<ul>
+<li>foreground</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>5%</span></span></code></pre>
+<h2 id="禁止记事本">禁止记事本</h2>
+<ol>
+<li>
+<p>开始->运行->gpedit.msc->计算机配置->windows设置->安全设置->软件限制策略</p>
+</li>
+<li>
+<p>右键点软件限制策略->创建软件限制策略</p>
+</li>
+<li>
+<p>点其他规则->右键新建路径规则->
+在“路径”下的空白输入框中“%windir%\notepad.exe“（或者c盘是系统盘的情况下：c:\windows\notepad.exe)->在“安全级别”中选择“不允许”</p>
+</li>
+</ol>
+<blockquote>
+<p>附：如果你要限制.txt的程序打开，可以在路径中输入*.txt。</p>
+</blockquote>  <footer> <a href="https://tdtc-hrb.github.io/blog-frontend">blog-frontend</a> <a href="https://tdtc-hrb.github.io/com-vc">com-vc</a> <a href="https://tdtc-hrb.github.io/css-tws">css-tws</a> <a href="https://tdtc-hrb.github.io/ops-win">ops-win</a> </footer> </body></html>

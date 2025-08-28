@@ -1,0 +1,50 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.13.3"><title>latest Clang for VSCode</title></head> <body> <h1>latest Clang for VSCode</h1>  <p><em>Standalone Cmake and Clang in VS Code</em></p> <p>2025-08-24</p> <p>Written by: xiaobin</p> <ul>
+<li><a href="https://github.com/llvm/llvm-project/releases">clang</a></li>
+<li><a href="https://github.com/Kitware/CMake/releases">cmake</a><br>
+<a href="https://llvm.org/docs/GettingStartedVS.html">Visual Studio 2022 will require CMake Version 3.21 or later</a></li>
+<li><a href="https://github.com/ninja-build/ninja/releases">ninja-build</a></li>
+<li>Visual Studio Code - CMake-tools plugin</li>
+</ul>
+<h3 id="msvc"><a href="https://tdtc-hrb.github.io/ops-win/posts/post-20">MSVC</a></h3>
+<p>Individual components:</p>
+<ul>
+<li>MSBuild support for LLVM(clang-cl) toolset</li>
+<li>Windows Universal C Runtime</li>
+</ul>
+<p>About: <a href="https://clang.llvm.org/docs/UsersManual.html#clang-cl">clang-cl</a> is an alternative command-line interface to Clang,
+designed for compatibility with the Visual C++ compiler, cl.exe.</p>
+<h2 id="project">project</h2>
+<p>├── Circular.cpp<br>
+├── Circular.h<br>
+├── testCir2.cpp<br>
+├── CMakeLists.txt</p>
+<h3 id="src">src</h3>
+<ul>
+<li><a href="https://tdtc-hrb.github.io/csdn/post/c-console_app">source files</a></li>
+<li><a href="https://github.com/microsoft/vscode-cmake-tools/issues/2391">CMakeLists.txt</a></li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>cmake_minimum_required(VERSION 3.23)</span></span>
+<span class="line"><span>project(mytest CXX)</span></span>
+<span class="line"><span>add_executable(testCir2 testCir2.cpp Circular.cpp)</span></span></code></pre>
+<h3 id="build">build</h3>
+<ul>
+<li>Open the Command Palette (Ctrl+Shift+P) and run</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>CMake: Select a Kit</span></span></code></pre>
+<ul>
+<li>Select the compiler you want to use.</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Clang-cl &#x3C;version> x86_64-pc-windows-msvc</span></span></code></pre>
+<p>These names are stored in “cmake-tools-kits.json”</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>%USERPROFILE%\AppData\Local\CMakeTools</span></span></code></pre>
+<ul>
+<li>Build all projects
+right click “CMakeLists.txt”,</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Build all projects</span></span></code></pre>
+<h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://clang.llvm.org/get_started.html">Getting Started: Building and Running Clang</a></li>
+<li><a href="https://code.visualstudio.com/docs/cpp/cmake-linux">Get started with CMake Tools on Linux</a></li>
+<li><a href="https://www.reddit.com/r/cpp_questions/comments/1j6fcjg/how_do_i_install_latest_clang_for_vscode_on/?rdt=60458">How do I install latest Clang for VSCode? </a></li>
+</ul>  <footer> <a href="https://tdtc-hrb.github.io/blog-frontend">blog-frontend</a> <a href="https://tdtc-hrb.github.io/com-vc">com-vc</a> <a href="https://tdtc-hrb.github.io/css-tws">css-tws</a> <a href="https://tdtc-hrb.github.io/ops-win">ops-win</a> </footer> </body></html>
