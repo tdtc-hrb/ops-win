@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.13.3"><title>PowerShell</title></head> <body> <h1>PowerShell</h1>  <p><em>执行本地ps1脚本</em></p> <p>2024-11-30</p> <p>Written by: xiaobin</p> <ul>
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.13.8"><title>PowerShell</title></head> <body> <h1>PowerShell</h1>  <p><em>执行本地ps1脚本</em></p> <p>2025-08-30</p> <p>Written by: xiaobin</p> <ul>
 <li>To get all of the execution policies that affect the current session and display them in precedence order:</li>
 </ul>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Get-ExecutionPolicy -List</span></span></code></pre>
@@ -21,10 +21,8 @@
 <li>Undefined</li>
 <li>Unrestricted</li>
 </ul>
-<h2 id="google-chrome">Google Chrome</h2>
-<ul>
-<li><a href="https://squirrelistic.com/blog/how_to_download_older_version_of_google_chrome">How to Download Older Version of Google Chrome</a></li>
-</ul>
-<h3 id="ms-edge">MS-Edge</h3>
-<p>Regardless of Microsoft’s reasoning, you now know how to toggle the sidebar on or off in Edge 119.
-Just head to Settings > Sidebar > Copilot > Always Show Sidebar. Alternatively, you can use the Ctrl + Shift + / shortcut.</p>  <footer> <a href="https://tdtc-hrb.github.io/blog-frontend">blog-frontend</a> <a href="https://tdtc-hrb.github.io/com-vc">com-vc</a> <a href="https://tdtc-hrb.github.io/css-tws">css-tws</a> <a href="https://tdtc-hrb.github.io/ops-win">ops-win</a> </footer> </body></html>
+<h3 id="win-server"><a href="https://community.spiceworks.com/t/gui-instalation-for-windows-2012-server-with-cli/1010685">win server</a></h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>powershell (enter PowerShell prompt)</span></span>
+<span class="line"><span>mkdir c:\mount</span></span>
+<span class="line"><span>dism /mount-wim /wimfile:d:\sources\install.wim /index:4 /mountdir:c:\mount /readonly</span></span>
+<span class="line"><span>install-windowsfeature server-gui-mgmt-infra,server-gui-shell –restart –source c:\mount\windows\winsxs</span></span></code></pre>  <footer> <a href="https://tdtc-hrb.github.io/blog-frontend">blog-frontend</a> <a href="https://tdtc-hrb.github.io/com-vc">com-vc</a> <a href="https://tdtc-hrb.github.io/css-tws">css-tws</a> <a href="https://tdtc-hrb.github.io/ops-win">ops-win</a> </footer> </body></html>
