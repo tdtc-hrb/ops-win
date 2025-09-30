@@ -1,5 +1,8 @@
-<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.14.1"><title>Desktop development with C++</title></head> <body> <h1>Desktop development with C++</h1>  <p><em>Use offline or online installation</em></p> <p>2025-09-28</p> <p>Written by: xiaobin</p> <h3 id="offline">offline</h3>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>.\VisualStudioSetup.exe --layout D:\v17.14 `</span></span>
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.14.1"><title>Desktop development with C++</title></head> <body> <h1>Desktop development with C++</h1>  <p><em>Use offline or online installation</em></p> <p>2025-09-30</p> <p>Written by: xiaobin</p> <h3 id="offline">offline</h3>
+<ul>
+<li>vs17/vs16</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>.\VisualStudioSetup.exe --layout D:\v17v16 `</span></span>
 <span class="line"><span>--add Microsoft.VisualStudio.Component.CoreEditor `</span></span>
 <span class="line"><span>--add Microsoft.VisualStudio.Workload.CoreEditor `</span></span>
 <span class="line"><span>--add Microsoft.VisualStudio.Component.Roslyn.Compiler `</span></span>
@@ -12,14 +15,33 @@
 <span class="line"><span>--add Microsoft.VisualStudio.Workload.NativeDesktop `</span></span>
 <span class="line"><span>--add Microsoft.VisualStudio.Component.Windows10SDK.19041 `</span></span>
 <span class="line"><span>--lang en-US</span></span></code></pre>
-<h3 id="online"><a href="https://visualstudio.microsoft.com/vs/community">online</a></h3>
+<h4 id="vs15">vs15</h4>
+<ul>
+<li>Analysis Tools</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>--add Microsoft.VisualStudio.Component.Static.Analysis.Tools `</span></span></code></pre>
+<ul>
+<li>win8.1 sdk</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>--add Microsoft.Component.VC.Runtime.UCRTSDK `</span></span>
+<span class="line"><span>--add Microsoft.VisualStudio.Component.Windows81SDK `</span></span>
+<span class="line"><span>--add Microsoft.VisualStudio.ComponentGroup.NativeDesktop.Win81 `</span></span></code></pre>
+<h2 id="online"><a href="https://visualstudio.microsoft.com/vs/community">online</a></h2>
 <p>optional:</p>
 <ul>
-<li>MSVC v143 - VS 2022 C++ x64/x86 build tools(Latest)</li>
-<li>vcpkg package manager</li>
-<li>Windows 10 SDK(10.0.19041.0)</li>
+<li>msvc</li>
+<li>Windows SDK</li>
 </ul>
-<h4 id="win-sdk">Win SDK</h4>
+<h3 id="msvc">msvc</h3>
+<ul>
+<li>vs2017<br>
+VC++ 2017 version 15.9 v14.16 latest v141 tools</li>
+<li>vs2019<br>
+MSVC v142 - VS 2019 C++ x64/x86 build tools(Latest)</li>
+<li>vs2022<br>
+MSVC v143 - VS 2022 C++ x64/x86 build tools(Latest)</li>
+</ul>
+<h3 id="win-sdk">Win SDK</h3>
 <ul>
 <li>vs2017<br>
 Windows 8.1 SDK and UCRT SDK</li>
