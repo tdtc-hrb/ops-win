@@ -2,7 +2,7 @@
 <ul>
 <li>vs17/vs16</li>
 </ul>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>.\VisualStudioSetup.exe --layout D:\v17v16 `</span></span>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>.\vs_community.exe --layout D:\v17v16 `</span></span>
 <span class="line"><span>--add Microsoft.VisualStudio.Component.CoreEditor `</span></span>
 <span class="line"><span>--add Microsoft.VisualStudio.Workload.CoreEditor `</span></span>
 <span class="line"><span>--add Microsoft.VisualStudio.Component.Roslyn.Compiler `</span></span>
@@ -16,16 +16,22 @@
 <span class="line"><span>--add Microsoft.VisualStudio.Component.Windows10SDK.19041 `</span></span>
 <span class="line"><span>--lang en-US</span></span></code></pre>
 <h4 id="vs15">vs15</h4>
-<ul>
-<li>Analysis Tools</li>
-</ul>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>--add Microsoft.VisualStudio.Component.Static.Analysis.Tools `</span></span></code></pre>
-<ul>
-<li>win8.1 sdk</li>
-</ul>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>--add Microsoft.Component.VC.Runtime.UCRTSDK `</span></span>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>.\vs_community.exe --layout D:\v15 `</span></span>
+<span class="line"><span>--add Microsoft.VisualStudio.Component.CoreEditor `</span></span>
+<span class="line"><span>--add Microsoft.VisualStudio.Workload.CoreEditor `</span></span>
+<span class="line"><span>--add Microsoft.VisualStudio.Component.Roslyn.Compiler `</span></span>
+<span class="line"><span>--add Microsoft.Component.MSBuild `</span></span>
+<span class="line"><span>--add Microsoft.VisualStudio.Component.Static.Analysis.Tools `</span></span>
+<span class="line"><span>--add Microsoft.VisualStudio.Component.TextTemplating `</span></span>
+<span class="line"><span>--add Microsoft.VisualStudio.Component.VC.CoreIde `</span></span>
+<span class="line"><span>--add Microsoft.VisualStudio.Component.VC.Redist.14.Latest `</span></span>
+<span class="line"><span>--add Microsoft.VisualStudio.ComponentGroup.NativeDesktop.Core `</span></span>
+<span class="line"><span>--add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 `</span></span>
+<span class="line"><span>--add Microsoft.Component.VC.Runtime.UCRTSDK `</span></span>
 <span class="line"><span>--add Microsoft.VisualStudio.Component.Windows81SDK `</span></span>
-<span class="line"><span>--add Microsoft.VisualStudio.ComponentGroup.NativeDesktop.Win81 `</span></span></code></pre>
+<span class="line"><span>--add Microsoft.VisualStudio.ComponentGroup.NativeDesktop.Win81 `</span></span>
+<span class="line"><span>--add Microsoft.VisualStudio.Workload.NativeDesktop `</span></span>
+<span class="line"><span>--lang en-US</span></span></code></pre>
 <h2 id="online"><a href="https://visualstudio.microsoft.com/vs/community">online</a></h2>
 <p>optional:</p>
 <ul>
@@ -50,7 +56,7 @@ Windows 8.1 SDK and UCRT SDK</li>
 <li>vs2019<br>
 Windows 10 SDK(10.0.19041.0)</li>
 <li>vs2022<br>
-Windows 10 SDK(10.0.19041.0)</li>
+Windows 11 SDK(10.0.22621.0)</li>
 <li>vs2026<br>
 Windows 11 SDK(10.0.26100.x)</li>
 </ul>  <footer> <a href="https://tdtc-hrb.github.io/blog-frontend">blog-frontend</a> <a href="https://tdtc-hrb.github.io/com-vc">com-vc</a> <a href="https://tdtc-hrb.github.io/css-tws">css-tws</a> <a href="https://tdtc-hrb.github.io/ops-win">ops-win</a> </footer> </body></html>
