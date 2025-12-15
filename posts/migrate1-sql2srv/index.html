@@ -1,0 +1,32 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.16.5"><title>SQL Server 2000数据库 安装</title></head> <body> <h1>SQL Server 2000数据库 安装</h1>  <p><em>MS Database 迁移之一</em></p> <p>2025-12-15</p> <p>Written by: xiaobin</p> <ul>
+<li>Windows Server 2003 R2 简体中文(x86)</li>
+</ul>
+<h3 id="migrate">Migrate</h3>
+<ul>
+<li>[SQL Server 2014: Hardware and Software Requirements](<a href="https://learn.microsoft.com/en-us/previous-versions/sql/2014/sql-server/install/hardware-and-software-requirements-for-installing-sql-server?view=sql-server-2014">https://learn.microsoft.com/en-us/previous-versions/sql/2014/sql-server/install/hardware-and-software-requirements-for-installing-sql-server?view=sql-server-2014</a></li>
+<li><a href="https://learn.microsoft.com/en-us/answers/questions/1486928/how-to-migrate-a-database-from-sql-server-2000-to">How to migrate a database from SQL Server 2000 to SQL server 2022 without paying for all the versions inbetween</a></li>
+</ul>
+<p>升级路线图：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>SQL 2000 -> SQL 2005(x86)</span></span>
+<span class="line"><span>SQL 2005(x64) -> SQL 2014(x64)</span></span></code></pre>
+<p>x64平台建议： Windows Server 2008 R2</p>
+<h2 id="instation">instation</h2>
+<p>SQL Server 2000 Developer Edition (Chinese-Simplified)</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>ed2k://|file|sc_sql_2000a_dev.iso|476665856|FC321271C84BD389F862C0D580B4ECC7|/</span></span></code></pre>
+<h3 id="安装服务器组件">安装服务器组件</h3>
+<p><img src="https://github.com/tdtc-hrb/csdn/raw/master/images/sp3req-sql2k0.png" alt="require sp3"></p>
+<p><img src="https://github.com/tdtc-hrb/csdn/raw/master/images/step1a-sql2k0.png" alt="welcome 1a"></p>
+<p><img src="https://github.com/tdtc-hrb/csdn/raw/master/images/step1b-sql2k0.png" alt="welcome 1b"></p>
+<p><img src="https://github.com/tdtc-hrb/csdn/raw/master/images/step2a-sql2k0.png" alt="welcome 2a"></p>
+<p><img src="https://github.com/tdtc-hrb/csdn/raw/master/images/step2b-sql2k0.png" alt="welcome 2b"></p>
+<h4 id="本地账户">本地账户</h4>
+<p><img src="https://github.com/tdtc-hrb/csdn/raw/master/images/step2c-sql2k0.png" alt="welcome 2c"></p>
+<h4 id="sa">sa</h4>
+<blockquote>
+<p>default password: pass2word1</p>
+</blockquote>
+<p><img src="https://github.com/tdtc-hrb/csdn/raw/master/images/step2d-sql2k0.png" alt="welcome 2d"></p>
+<h3 id="sp4">SP4</h3>
+<p>-<a href="http://download.microsoft.com/download/9/b/f/9bff6646-2cdb-4069-ada0-548be9cb9338/SQL2000-KB884525-SP4-x86-CHS.EXE">sp4-chs</a></p>
+<p>安装SQL2000-KB884525-SP4-x86-CHS.EXE后，默认解压的目录为：“C:\SQL2KSP4”;
+进入该目录，双击”setup.bat”即可。</p>  <footer> <a href="https://tdtc-hrb.github.io/blog-frontend">blog-frontend</a> <a href="https://tdtc-hrb.github.io/com-vc">com-vc</a> <a href="https://tdtc-hrb.github.io/css-tws">css-tws</a> <a href="https://tdtc-hrb.github.io/ops-win">ops-win</a> </footer> </body></html>
