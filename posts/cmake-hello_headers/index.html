@@ -1,0 +1,70 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.16.9"><title>learn CMake - Locations</title></head> <body> <h1>learn CMake - Locations</h1>  <p><em>Hello Headers</em></p> <p>2026-01-24</p> <p>Written by: xiaobin</p> <ul>
+<li><a href="https://tdtc-hrb.github.io/ops-win/posts/clang-win/">Latest Clang for VSCode</a></li>
+</ul>
+<h3 id="locations"><a href="https://gitlab.kitware.com/cmake/community/-/wikis/doc/cmake/Useful-Variables#locations">Locations</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Variable</th><th>Info</th></tr></thead><tbody><tr><td>CMAKE_CURRENT_SOURCE_DIR</td><td>The current source directory if using sub-projects and directories.</td></tr><tr><td>CMAKE_CURRENT_LIST_DIR</td><td>(since 2.8.3) this is the directory of the listfile currently being processed.</td></tr><tr><td>CMAKE_SOURCE_DIR</td><td>this is the directory which contains the top-level CMakeLists.txt, i.e. the top level source directory.</td></tr><tr><td>PROJECT_SOURCE_DIR</td><td>contains the full path to the root of your project source directory, i.e. to the nearest directory where CMakeLists.txt contains the PROJECT() command.</td></tr></tbody></table>
+<h4 id="difference-between-cmake_current_source_dir-and-cmake_current_list_dir"><a href="https://stackoverflow.com/questions/15662497/difference-between-cmake-current-source-dir-and-cmake-current-list-dir">Difference between CMAKE_CURRENT_SOURCE_DIR and CMAKE_CURRENT_LIST_DIR</a></h4>
+<p>The variables CMAKE_CURRENT_SOURCE_DIR and CMAKE_CURRENT_LIST_DIR may refer to different directories
+for a CMake list file that is included by another file with the include command. E.g.,
+if a CMakeLists.txt is present in a directory project and contains the following directive</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>include(src/CMakeLists.txt)</span></span></code></pre>
+<p>then while src/CMakeLists.txt is being processed CMAKE_CURRENT_LIST_DIR
+will refer to project/src whereas CMAKE_CURRENT_SOURCE_DIR still points to the outer directory project.</p>
+<p>CMAKE_CURRENT_LIST_DIR comes in handy, when you need to locate resource files like template files or
+batch scripts that are located next to the CMakeLists.txt file currently being processed.</p>
+<h4 id="are-cmake_source_dir-and-project_source_dir-the-same-in-cmake"><a href="https://stackoverflow.com/questions/32028667/are-cmake-source-dir-and-project-source-dir-the-same-in-cmake">Are CMAKE_SOURCE_DIR and PROJECT_SOURCE_DIR the same in CMake?</a></h4>
+<p>There is a difference between these variables. CMAKE_SOURCE_DIR does indeed refer to the folder where the top-level CMakeLists.txt is defined.
+However, PROJECT_SOURCE_DIR refers to the folder of the CMakeLists.txt containing the most recent project() command.</p>
+<p>For example, say you have a top-level project called Outer and this contains a subdirectory with its own project called Inner.
+Outer’s CMakeLists.txt has:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>project(Outer)</span></span>
+<span class="line"><span>add_subdirectory(Inner)</span></span></code></pre>
+<p>and Inner’s:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>project(Inner)</span></span></code></pre>
+<p>Then in both of these CMakeLists files, CMAKE_SOURCE_DIR will refer to Outer’s source dir.
+But while PROJECT_SOURCE_DIR for Outer is also this same dir, this is not the case for Inner.
+Inner’s PROJECT_SOURCE_DIR is the subdirectory containing its CMakeLists.txt.</p>
+<p>This difference applies to all <code>PROJECT_&#x3C;var></code> vs <code>CMAKE_&#x3C;var></code> variables.</p>
+<h3 id="example">example</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>cmake_minimum_required(VERSION 4.2)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># Set the project name</span></span>
+<span class="line"><span>project(mytest)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># Add an executable with the above sources</span></span>
+<span class="line"><span>add_executable(mytest main.c hex2int.c)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>target_include_directories(mytest</span></span>
+<span class="line"><span>    PRIVATE </span></span>
+<span class="line"><span>        ${PROJECT_SOURCE_DIR}</span></span>
+<span class="line"><span>)</span></span></code></pre>
+<p>source from <a href="https://tdtc-hrb.github.io/csdn/post/c-string-h2i/">十六进制转十进制</a></p>
+<h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://github.com/ttroy50/cmake-examples/tree/master/01-basic/B-hello-headers">hello-headers</a></li>
+</ul>  <footer> <a href="https://tdtc-hrb.github.io/blog-frontend">blog-frontend</a> <a href="https://tdtc-hrb.github.io/com-vc">com-vc</a> <a href="https://tdtc-hrb.github.io/css-tws">css-tws</a> <a href="https://tdtc-hrb.github.io/ops-win">ops-win</a> </footer> </body></html>
