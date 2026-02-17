@@ -1,31 +1,4 @@
-<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.17.2"><title>Clang for Clion</title></head> <body> <h1>Clang for Clion</h1>  <p><em>MSYS2 + Clion</em></p> <p>2026-02-15</p> <p>Written by: xiaobin</p> <ul>
-<li><a href="https://www.msys2.org">msys2</a></li>
-<li><a href="https://www.jetbrains.com/clion/">Clion</a></li>
-</ul>
-<h2 id="msys2">msys2</h2>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>C:\msys64\clang64\bin</span></span></code></pre>
-<p>加到PATH</p>
-<h3 id="installation">installation</h3>
-<p>open “MSYS2 CLANG64” from the Start menu.</p>
-<ul>
-<li>clang</li>
-</ul>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>pacman -S mingw-w64-clang-x86_64-clang</span></span></code></pre>
-<ul>
-<li>cmake</li>
-</ul>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>pacman -S mingw-w64-x86_64-cmake</span></span></code></pre>
-<ul>
-<li>nija</li>
-</ul>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>pacman -S mingw-w64-x86_64-ninja</span></span></code></pre>
-<h3 id="library">library</h3>
-<ul>
-<li>boost</li>
-</ul>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>pacman -S mingw-w64-x86_64-boost</span></span></code></pre>
-<h2 id="project">project</h2>
-<ul>
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.17.2"><title>Clang for Clion</title></head> <body> <h1>Clang for Clion</h1>  <p><em>MSYS2 + Clion</em></p> <p>2026-02-17</p> <p>Written by: xiaobin</p> <ul>
 <li><a href="https://www.boost.org/doc/libs/latest/libs/random/example/random_demo.cpp">random demo</a></li>
 </ul>
 <h3 id="use-boost"><a href="https://gist.github.com/yeiichi/974515fcd2d593460fd9991a991ea147">use boost</a></h3>
@@ -40,30 +13,46 @@
 <span class="line"><span>include_directories(${Boost_INCLUDE_DIRS})</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>add_executable(untitled main.cpp)</span></span></code></pre>
-<h3 id="tool-chains---config">Tool chains - config</h3>
-<blockquote>
-<p>File -> Settings -> Build, Execution, Deployment</p>
-</blockquote>
+<h2 id="msys2"><a href="https://www.msys2.org">msys2</a></h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>C:\msys64\clang64\bin</span></span></code></pre>
+<p>加到PATH</p>
+<h3 id="installation">installation</h3>
+<p>open “MSYS2 CLANG64” from the Start menu.</p>
+<ul>
+<li>clang</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>pacman -S mingw-w64-clang-x86_64-toolchain</span></span></code></pre>
 <ul>
 <li>cmake</li>
 </ul>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>C:\msys64\mingw64\bin\cmake.exe</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>pacman -S mingw-w64-x86_64-cmake</span></span></code></pre>
 <ul>
-<li>build tool</li>
+<li>nija</li>
 </ul>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>C:\msys64\mingw64\bin\ninja.exe</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>pacman -S mingw-w64-x86_64-ninja</span></span></code></pre>
+<h4 id="gdb---option">gdb - option</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>pacman -S mingw-w64-clang-x86_64-gdb</span></span></code></pre>
+<h3 id="library">library</h3>
 <ul>
-<li>c compiler - (org: gcc)</li>
+<li>boost</li>
 </ul>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>C:\msys64\clang64\bin\clang.exe</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>pacman -S mingw-w64-x86_64-boost</span></span></code></pre>
+<h2 id="clion">Clion</h2>
+<p><a href="https://www.jetbrains.com/clion/">Clion</a> bundles a version of the MinGW toolset for quick setup.
+The exact version bundled is MinGW-w64 13.1
+with <i>posix</i> threads, and <i>seh</i> exceptions.</p>
+<h4 id="thread-model---threads">Thread model - threads</h4>
 <ul>
-<li>c++ compiler - (org: g++)</li>
+<li><a href="https://github.com/lhmouse/mcfgthread/blob/master/README.md">mcf</a><br>
+MCF Gthread is a threading support library for Windows 7 and above that implements the gthread interface set,
+which is used internally both by GCC to provide synchronization of initialization of local static objects,
+and by libstdc++ to provide C++11 threading facilities.</li>
+<li>win32<br>
+Windows All Versions</li>
+<li>posix<br>
+Unix-like</li>
 </ul>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>C:\msys64\clang64\bin\clang++.exe</span></span></code></pre>
-<h3 id="update-mingw---option"><a href="https://github.com/niXman/mingw-builds-binaries">update mingw</a> - option</h3>
-<p>把x86_64-15.2.0-release-posix-seh-ucrt-rt_v13-rev0.7z覆盖到</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>&#x3C;CLion-HOME>\bin\mingw</span></span></code></pre>
-<h4 id="exception-handling">Exception Handling</h4>
+<h4 id="exception-handling---exceptions">Exception Handling - exceptions</h4>
 <ul>
 <li><a href="https://dwarfstd.org/doc/Debugging%20using%20DWARF-2012.pdf">dwarf</a></li>
 </ul>
@@ -71,11 +60,23 @@
 <p>Debugging With Arbitrary Record Formats</p>
 </blockquote>
 <ul>
-<li>Structured Exception Handling (SEH)<br>
-MSYS2 usage</li>
+<li>Structured Exception Handling (SEH)</li>
 </ul>
+<h3 id="upgrade-mingw-bundled-with-clion---option"><a href="https://github.com/niXman/mingw-builds-binaries">Upgrade MingW bundled with Clion</a> - option</h3>
+<p>把x86_64-15.2.0-release-posix-seh-ucrt-rt_v13-rev0.7z覆盖到</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>&#x3C;CLion-HOME>\bin\mingw</span></span></code></pre>
+<h3 id="toolchain">Toolchain</h3>
+<blockquote>
+<p>Go to Settings | Build, Execution, Deployment | Toolchains and create a MinGW toolchain
+Set the Toolset to C:\msys64\clang64. Set other paths manually in case they are not detected automatically.</p>
+</blockquote>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/cl_clang_mingw.png" alt="toolchain"></p>
+<ul>
+<li>Clion picture</li>
+</ul>
+<p><img src="https://resources.jetbrains.com/help/img/idea/2025.3/cl_clang_mingw.png" alt="toolchain"></p>
 <h2 id="ref">Ref</h2>
 <ul>
-<li><a href="https://www.mingw-w64.org/getting-started/msys2-llvm/">MSYS2 (Clang/LLVM)</a></li>
+<li><a href="https://www.jetbrains.com/help/clion/quick-tutorial-on-configuring-clion-on-windows.html#setup-clang">Set up the Clang compiler for MinGW</a></li>
 <li><a href="https://www.msys2.org/docs/cmake/">Using CMake in MSYS2</a></li>
 </ul>  <footer> <a href="https://tdtc-hrb.github.io/blog-frontend">blog-frontend</a> <a href="https://tdtc-hrb.github.io/com-vc">com-vc</a> <a href="https://tdtc-hrb.github.io/css-tws">css-tws</a> <a href="https://tdtc-hrb.github.io/ops-win">ops-win</a> </footer> </body></html>
