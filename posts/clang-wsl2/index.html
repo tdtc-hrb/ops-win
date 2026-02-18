@@ -1,0 +1,63 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.17.2"><title>Clang for WSL2</title></head> <body> <h1>Clang for WSL2</h1>  <p><em>Note that CLion does not support legacy WSL.</em></p> <p>2026-02-18</p> <p>Written by: tdtc</p> <ul>
+<li><a href="https://tdtc-hrb.github.io/com-vc/posts/boost-thread/">example</a></li>
+<li>CMakeLists.txt</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>cmake_minimum_required(VERSION 4.2)</span></span>
+<span class="line"><span>project(untitled)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>set(CMAKE_CXX_STANDARD 17)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>find_package(Boost COMPONENTS thread chrono system REQUIRED)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>include_directories(${Boost_INCLUDE_DIRS})</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>add_executable(untitled main.cpp)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>target_link_libraries(untitled ${Boost_LIBRARIES})</span></span></code></pre>
+<h2 id="toolchain">Toolchain</h2>
+<ul>
+<li>cmake</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>sudo apt install cmake</span></span></code></pre>
+<ul>
+<li>ninja</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>sudo apt -y install ninja-build</span></span></code></pre>
+<ul>
+<li>Clang</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>sudo apt install libboost-all-dev</span></span></code></pre>
+<h3 id="update-cmake-on-ubuntu"><a href="https://linuxvox.com/blog/update-cmake-ubuntu/#method-2-using-the-kitware-apt-repository">Update CMake on Ubuntu</a></h3>
+<ul>
+<li>Ubuntu 20.04 (focal)</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span># Install the necessary dependencies</span></span>
+<span class="line"><span>sudo apt update</span></span>
+<span class="line"><span>sudo apt install apt-transport-https ca-certificates gnupg software-properties-common wget</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span># Add the Kitware signing key</span></span>
+<span class="line"><span>wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | sudo tee /usr/share/keyrings/kitware-archive-keyring.gpg >/dev/null</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span># Add the Kitware APT repository</span></span>
+<span class="line"><span>echo 'deb [signed-by=/usr/share/keyrings/kitware-archive-keyring.gpg] https://apt.kitware.com/ubuntu/ focal main' | sudo tee /etc/apt/sources.list.d/kitware.list >/dev/null</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span># Update the package list</span></span>
+<span class="line"><span>sudo apt update</span></span></code></pre>
+<ul>
+<li>install new version:</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>sudo apt upgrade</span></span></code></pre>
+<h3 id="clion-setting">clion setting</h3>
+<blockquote>
+<p>注意： 路径要使用 /usr/bin</p>
+</blockquote>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/cl_wsl_new_toolchain.png" alt="toolchain"></p>
+<ul>
+<li>Clion picture
+<img src="https://resources.jetbrains.com/help/img/idea/2025.3/cl_wsl_new_toolchain.png" alt="toolchain"></li>
+</ul>
+<h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://stackoverflow.com/a/41393896">Linking Boost thread library</a></li>
+<li><a href="https://www.jetbrains.com/help/clion/how-to-use-wsl-development-environment-in-product.html#wsl-general">Configure WSL</a></li>
+</ul>  <footer> <a href="https://tdtc-hrb.github.io/blog-frontend">blog-frontend</a> <a href="https://tdtc-hrb.github.io/com-vc">com-vc</a> <a href="https://tdtc-hrb.github.io/css-tws">css-tws</a> <a href="https://tdtc-hrb.github.io/ops-win">ops-win</a> </footer> </body></html>
