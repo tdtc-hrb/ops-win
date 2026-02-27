@@ -1,0 +1,49 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.17.2"><title>Install TCL development libraries</title></head> <body> <h1>Install TCL development libraries</h1>  <p><em>Tool Command Language (Tcl) for Windows</em></p> <p>2026-02-23</p> <p>Written by: xiaobin</p> <p>TCL is a generic “Bash” that is not bundled with an operating system.</p>
+<p>It provides shell operations for installing package tools (e.g., InstallShield, Wise, NSIS) and operating systems.</p>
+<h2 id="win">win</h2>
+<ul>
+<li><a href="https://www.tcl.tk/software/tcltk/download.html">tcl</a></li>
+<li><a href="https://tdtc-hrb.github.io/ops-win/posts/vc-win">VC14.1+</a></li>
+</ul>
+<h3 id="config">config</h3>
+<ul>
+<li>x86</li>
+<li>x64</li>
+</ul>
+<h4 id="x86">x86</h4>
+<ul>
+<li>install directry:</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>c:\tcl32</span></span></code></pre>
+<ul>
+<li>x86 Native Tools Command Prompt</li>
+</ul>
+<h4 id="x64">x64</h4>
+<ul>
+<li>install directry:</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>c:\tcl</span></span></code></pre>
+<ul>
+<li>x64 Native Tools Command Prompt</li>
+</ul>
+<h3 id="install">Install</h3>
+<p>Untar or unzip the source archive.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>cd win</span></span>
+<span class="line"><span>nmake /f makefile.vc INSTALLDIR=c:\tcl32 release</span></span>
+<span class="line"><span>nmake /f makefile.vc INSTALLDIR=c:\tcl32 install</span></span></code></pre>
+<ul>
+<li>
+<p>rename<br>
+tclsh90.exe rename tclsh.exe</p>
+</li>
+<li>
+<p>add path<br>
+Add <code>c:\Tcl\bin</code> to your %PATH%.</p>
+</li>
+</ul>
+<h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://github.com/sqlcipher/sqlcipher/blob/master/doc/compile-for-windows.md">Install TCL development libraries</a></li>
+<li><a href="https://www.tcl-lang.org/doc/howto/compile.html">How to Compile Tcl</a></li>
+<li><a href="https://www.karl.berlin/tcl-blog.html">Tcl as a Shell Scripting Replacement</a></li>
+</ul>  <footer> <a href="https://tdtc-hrb.github.io/blog-frontend">blog-frontend</a> <a href="https://tdtc-hrb.github.io/com-vc">com-vc</a> <a href="https://tdtc-hrb.github.io/css-tws">css-tws</a> <a href="https://tdtc-hrb.github.io/ops-win">ops-win</a> </footer> </body></html>

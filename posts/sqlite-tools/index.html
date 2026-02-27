@@ -1,0 +1,35 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.17.2"><title>打开不同的sqlite tool</title></head> <body> <h1>打开不同的sqlite tool</h1>  <p><em>rc4: sqlite expert; chacha20(etc.): wxSQLite</em></p> <p>2026-02-26</p> <p>Written by: xiaobin</p> <p>Since version 1.0.113.0 the public System.Data.SQLite package does not support its prior RC4 encryption
+any longer due to the removal of the SQLITE_HAS_CODEC interface in SQLite version 3.32.0.</p>
+<h2 id="tools">Tools</h2>
+<ul>
+<li><a href="https://sourceforge.net/projects/sqlitestudio.mirror">SQLiteStudio</a></li>
+<li><a href="http://www.sqliteexpert.com/download.html">SQLite Expert</a></li>
+</ul>
+<h4 id="about-wxsqlite3">About wxSQLite3</h4>
+<p>SQLite Expert does not support wxSQLite and SQLCipher</p>
+<h4 id="about-sqlit-cipher">About Sqlit Cipher</h4>
+<p><a href="https://github.com/sqlitebrowser/sqlitebrowser/releases">DBrowser</a> supports SQLCipher version 4.6.1;
+the latest <a href="https://github.com/sqlcipher/sqlcipher/releases">SQLCipher</a> version is 4.13.</p>
+<h3 id="sqlitestudio">SQLiteStudio</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Database -> add a database</span></span></code></pre>
+<ul>
+<li>database type:
+WxSQLite3</li>
+<li>Cipher:
+System.Data.SQLite:RC4</li>
+</ul>
+<h3 id="sqlite-expert">SQLite Expert</h3>
+<p>First, copy the old version(v1.0.112) of System.Data.SQLite.dll to the bin directory;</p>
+<p>For example, the bin directory of the professional version:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>C\Program Files (x86)\SQLite Expert\Professional 5</span></span></code></pre>
+<ul>
+<li>SQLite library</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Tools -> Options</span></span></code></pre>
+<p>choose:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>System.Data.SQLite.dll 3.30.1 [FTS3 FTS4 RTREE ENC2]</span></span></code></pre>
+<h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://forums.wxwidgets.org/viewtopic.php?t=47449">wxSQLite3 4.6.0 released</a></li>
+<li><a href="https://stackoverflow.com/questions/49048770/open-encrypted-sqlite-database-with-sqlitestudio#comment140308593_70102978">Open encrypted SQLite database with SQLiteStudio</a></li>
+</ul>  <footer> <a href="https://tdtc-hrb.github.io/blog-frontend">blog-frontend</a> <a href="https://tdtc-hrb.github.io/com-vc">com-vc</a> <a href="https://tdtc-hrb.github.io/css-tws">css-tws</a> <a href="https://tdtc-hrb.github.io/ops-win">ops-win</a> </footer> </body></html>
