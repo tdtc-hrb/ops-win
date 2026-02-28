@@ -1,0 +1,58 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.18.0"><title>Compile DuckDB using CMake in MSVC/Clang</title></head> <body> <h1>Compile DuckDB using CMake in MSVC/Clang</h1>  <p><em>Compiling duckdb on Windows</em></p> <p>2026-02-28</p> <p>Written by: xiaobin</p> <ul>
+<li><a href="https://github.com/duckdb/duckdb/releases">Source code (zip)</a></li>
+</ul>
+<p>We recommend using a Clang-based VS Code environment.</p>
+<h2 id="clang-win"><a href="https://tdtc-hrb.github.io/ops-win/posts/clang-win/">Clang-win</a></h2>
+<ul>
+<li>Stage 1</li>
+<li>Stage 2</li>
+</ul>
+<h3 id="stage-1---static-and-dynamic-library">Stage 1 - static and dynamic library</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>File -> Open Folder</span></span></code></pre>
+<p>Open the root directory</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>C:\Users\hp262\Documents\duckdb-1.4.4</span></span></code></pre>
+<p>and <code>Build -> Build All</code></p>
+<h3 id="stage-2---example">Stage 2 - Example</h3>
+<p>Open <i>embedded-c++</i> directory</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>C:\Users\hp262\Documents\duckdb-1.4.4\examples\embedded-c++</span></span></code></pre>
+<p>Edit CMakeLists to change the location of the lib directory;
+Original location:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>link_directories(../../build/release/src)</span></span></code></pre>
+<p>Modified location:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>link_directories(../../build/src)</span></span></code></pre>
+<p>and <code>Build -> Build All</code></p>
+<h2 id="msvc">MSVC</h2>
+<ul>
+<li>VS2019+</li>
+</ul>
+<blockquote>
+<p>includes C++ CMake tools for Windows</p>
+</blockquote>
+<h3 id="stage-1---static-and-dynamic-library-1">Stage 1 - static and dynamic library</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>File -> CMake</span></span></code></pre>
+<p>Open CMakeLists.txt in the root directory</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>D:\d2b\duckdb-1.4.4\CMakeLists.txt</span></span></code></pre>
+<p>and <code>Build -> Build All</code></p>
+<h3 id="stage-2---example-1">Stage 2 - Example</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>File -> CMake</span></span></code></pre>
+<p>Open CMakeLists.txt in the <i>embedded-c++</i> directory</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>D:\d2b\duckdb-1.4.4\examples\embedded-c++\CMakeLists.txt</span></span></code></pre>
+<p>Edit CMakeLists to change the location of the lib directory;
+Original location:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>link_directories(../../build/release/src)</span></span></code></pre>
+<p>Modified location:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>link_directories(../../out/build/x64-Debug/src)</span></span></code></pre>
+<p>and <code>Build -> Build All</code></p>
+<h2 id="test">Test</h2>
+<p>Copy the following files to the same directory:</p>
+<ul>
+<li>example.exe</li>
+<li>duckdb.dll</li>
+</ul>
+<p>The output will be displayed at the command prompt:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>C:\Users\hp262\Documents>example.exe</span></span>
+<span class="line"><span>i</span></span>
+<span class="line"><span>INTEGER</span></span>
+<span class="line"><span>[ Rows: 1]</span></span>
+<span class="line"><span>3</span></span>
+<span class="line"><span></span></span></code></pre>  <footer> <a href="https://tdtc-hrb.github.io/blog-frontend">blog-frontend</a> <a href="https://tdtc-hrb.github.io/com-vc">com-vc</a> <a href="https://tdtc-hrb.github.io/css-tws">css-tws</a> <a href="https://tdtc-hrb.github.io/ops-win">ops-win</a> </footer> </body></html>
