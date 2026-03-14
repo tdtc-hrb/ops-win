@@ -1,31 +1,27 @@
-<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.18.0"><title>Desktop development with C++</title></head> <body> <h1>Desktop development with C++</h1>  <p><em>Use offline or online installation</em></p> <p>2026-01-25</p> <p>Written by: xiaobin</p> <h3 id="offline">offline</h3>
-<ul>
-<li>v18</li>
-</ul>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>.\VisualStudioSetup.exe --layout D:\v18 `</span></span>
-<span class="line"><span>--add Microsoft.VisualStudio.Component.CoreEditor `</span></span>
-<span class="line"><span>--add Microsoft.VisualStudio.Workload.CoreEditor `</span></span>
-<span class="line"><span>--add Microsoft.VisualStudio.Component.Roslyn.Compiler `</span></span>
-<span class="line"><span>--add Microsoft.Component.MSBuild `</span></span>
-<span class="line"><span>--add Microsoft.VisualStudio.Component.TextTemplating `</span></span>
-<span class="line"><span>--add Microsoft.VisualStudio.Component.DiagnosticTools `</span></span>
-<span class="line"><span>--add Microsoft.VisualStudio.Component.VC.CoreIde `</span></span>
-<span class="line"><span>--add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 `</span></span>
-<span class="line"><span>--add Microsoft.VisualStudio.Component.VC.Redist.14.Latest `</span></span>
-<span class="line"><span>--add Microsoft.VisualStudio.ComponentGroup.NativeDesktop.Core `</span></span>
-<span class="line"><span>--add Microsoft.VisualStudio.Workload.NativeDesktop `</span></span>
-<span class="line"><span>--add Microsoft.VisualStudio.Component.Windows11SDK.26100 `</span></span>
-<span class="line"><span>--lang en-US</span></span></code></pre>
-<h2 id="online"><a href="https://visualstudio.microsoft.com/vs/community">online</a></h2>
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.18.1"><title>Desktop development with C++</title></head> <body> <h1>Desktop development with C++</h1>  <p><em>installation and configuration</em></p> <p>2026-01-25</p> <p>Written by: xiaobin</p> <h2 id="installation">installation</h2>
 <p>optional:</p>
 <ul>
-<li>msvc</li>
+<li>Desktop development with C++</li>
 <li>Windows SDK</li>
 </ul>
-<h3 id="msvc">msvc</h3>
+<blockquote>
+<p>Windows 11 SDK (10.0.226210)</p>
+</blockquote>
+<h3 id="desktop-development-with-c">Desktop development with C++</h3>
 <ul>
 <li>vs2022<br>
 MSVC v143 - VS 2022 C++ x64/x86 build tools(Latest)</li>
 <li>vs2026<br>
 MSVC v145 - x64/x86 build tools(Latest)</li>
-</ul>  <footer> <a href="https://tdtc-hrb.github.io/blog-frontend">blog-frontend</a> <a href="https://tdtc-hrb.github.io/com-vc">com-vc</a> <a href="https://tdtc-hrb.github.io/css-tws">css-tws</a> <a href="https://tdtc-hrb.github.io/ops-win">ops-win</a> </footer> </body></html>
+</ul>
+<h2 id="configuration">configuration</h2>
+<ul>
+<li>Cmake</li>
+</ul>
+<h3 id="cmake---update-version">Cmake - update version</h3>
+<ul>
+<li>vs2022
+<code>Tools -> options</code>
+choice “CMake” and set at “Custom CMake information”:</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Enable custom CMake executable</span></span></code></pre>  <footer> <a href="https://tdtc-hrb.github.io/blog-frontend">blog-frontend</a> <a href="https://tdtc-hrb.github.io/com-vc">com-vc</a> <a href="https://tdtc-hrb.github.io/css-tws">css-tws</a> <a href="https://tdtc-hrb.github.io/ops-win">ops-win</a> </footer> </body></html>
