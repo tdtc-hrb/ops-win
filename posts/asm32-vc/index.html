@@ -1,0 +1,70 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v6.2.1"><title>MASM32</title></head> <body> <h1>MASM32</h1>  <p><em>32-bit assembler</em></p> <p>2026-01-16</p> <p>Written by: xiaobin</p> <p>After downloading <a href="http://www.masm32.com/download/masm32v11r.zip">v11r</a>, install it using administrator.</p>
+<p>Create an empty console application (VC++) and set it up.</p>
+<h2 id="project-set">project Set</h2>
+<ul>
+<li>set masm<br>
+Project -> Build Customizations<br>
+checked:</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>masm(.targets, .props)</span></span></code></pre>
+<ul>
+<li>set entry point<br>
+Linker -> Advanced</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Entry Point: main</span></span></code></pre>
+<ul>
+<li>set path<br>
+Linker -> General -> Additional Library Directories</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>C:\masm32\lib;</span></span></code></pre>
+<h2 id="program">program</h2>
+<p>new file “test1.asm” right click “properties” choice “Microsoft Macro Assembler”</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Project -> Add New Item</span></span></code></pre>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/Add-New-Item_vc141.png" alt="Add New Item"></p>
+<p>Microsoft Macro Assembler -> General -> Include Paths</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>C:\masm32\include;</span></span></code></pre>
+<h3 id="code">code</h3>
+<blockquote>
+<p>test1.asm</p>
+</blockquote>
+<ul>
+<li>v14.x</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>.686</span></span>
+<span class="line"><span>.MODEL  flat, c</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>includelib ucrt.lib                            ; VS2015+ Usage</span></span>
+<span class="line"><span>includelib legacy_stdio_definitions.lib        ; VS2015+ Usage</span></span>
+<span class="line"><span>;includelib  \masm32\lib\msvcrt.lib            ; VS2013- Usage</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>;Function prototypes </span></span>
+<span class="line"><span>printf  proto arg1:ptr byte, printlist:vararg</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>.data</span></span>
+<span class="line"><span>msg1fmt byte "%s%d",0Ah,0</span></span>
+<span class="line"><span>msg1    byte "y: ",0</span></span>
+<span class="line"><span>x       sdword ?</span></span>
+<span class="line"><span>y       sdword ?</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>.code</span></span>
+<span class="line"><span>        align 4</span></span>
+<span class="line"><span>        </span></span>
+<span class="line"><span>main    PROC</span></span>
+<span class="line"><span>        mov eax, 3h</span></span>
+<span class="line"><span>        mov x, eax</span></span>
+<span class="line"><span>        ;;y = 2 + 3</span></span>
+<span class="line"><span>        ;add eax, 2h</span></span>
+<span class="line"><span>        ;;y = 3 - 2</span></span>
+<span class="line"><span>        sub eax, 2h</span></span>
+<span class="line"><span>        mov y, eax</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>        invoke printf, ADDR msg1fmt, ADDR msg1, y</span></span>
+<span class="line"><span>        ret</span></span>
+<span class="line"><span>main    ENDP</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>end ;program end</span></span></code></pre>
+<h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://scriptbucket.wordpress.com/2011/10/19/setting-up-visual-studio-10-for-masm32-programming/">Setting Up Visual Studio 10 for MASM32 Programming</a></li>
+<li><a href="http://masm32.com/board/index.php?topic=6347.0">printf working not correct in masm - Vortex</a></li>
+</ul>  <footer> <a href="https://tdtc-hrb.github.io/blog-frontend">blog-frontend</a> <a href="https://tdtc-hrb.github.io/com-vc">com-vc</a> <a href="https://tdtc-hrb.github.io/css-tws">css-tws</a> <a href="https://tdtc-hrb.github.io/ops-win">ops-win</a> </footer> </body></html>

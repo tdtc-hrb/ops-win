@@ -1,0 +1,38 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v6.2.1"><title>Visual Studio 2013/2015 NuGet issue</title></head> <body> <h1>Visual Studio 2013/2015 NuGet issue</h1>  <p><em>Visual Studio 2013/2015 NuGet package management doesn&#39;t work well</em></p> <p>2026-05-03</p> <p>Written by: xiaobin</p> <p><a href="https://developercommunity.visualstudio.com/t/visual-studio-2013-nuget-package-management-doesnt/1096344">Visual Studio 2013 NuGet package management doesn’t work well.</a></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>When I try to install nuget packages in Visual Studio 2013, </span></span>
+<span class="line"><span>I can’t connect to the nuget.org and can’t see any nuget packages to download and install.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Reproduce Steps:</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Launch Visual Studio 2013 > Create a simple new project (maybe C# console app) </span></span>
+<span class="line"><span>> right-click the project > Manage NuGet Packages… > Online > All</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Then you can see the “Retrieving information…” displays, but after a while, </span></span>
+<span class="line"><span>VS still displaying “Retrieving information”.</span></span></code></pre>
+<p><strong>NuGet Recommendation: Visual Studio 2017 and later!</strong></p>
+<h3 id="operating-systems">Operating Systems</h3>
+<ul>
+<li>query</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cmd"><code><span class="line"><span style="color:#E1E4E8">reg query </span><span style="color:#9ECBFF">"HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client"</span><span style="color:#E1E4E8"> /v Enabled /reg:</span><span style="color:#79B8FF">32</span></span>
+<span class="line"><span style="color:#E1E4E8">reg query </span><span style="color:#9ECBFF">"HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client"</span><span style="color:#E1E4E8"> /v Enabled /reg:</span><span style="color:#79B8FF">64</span></span></code></pre>
+<ul>
+<li>Enabled</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cmd"><code><span class="line"><span style="color:#E1E4E8">reg </span><span style="color:#79B8FF">add</span><span style="color:#9ECBFF"> "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client"</span><span style="color:#E1E4E8"> /v DisabledByDefault /t REG_DWORD /d </span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8"> /f /reg:</span><span style="color:#79B8FF">32</span></span>
+<span class="line"><span style="color:#E1E4E8">reg </span><span style="color:#79B8FF">add</span><span style="color:#9ECBFF"> "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client"</span><span style="color:#E1E4E8"> /v DisabledByDefault /t REG_DWORD /d </span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8"> /f /reg:</span><span style="color:#79B8FF">64</span></span>
+<span class="line"><span style="color:#E1E4E8">reg </span><span style="color:#79B8FF">add</span><span style="color:#9ECBFF"> "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client"</span><span style="color:#E1E4E8"> /v Enabled /t REG_DWORD /d </span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8"> /f /reg:</span><span style="color:#79B8FF">32</span></span>
+<span class="line"><span style="color:#E1E4E8">reg </span><span style="color:#79B8FF">add</span><span style="color:#9ECBFF"> "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client"</span><span style="color:#E1E4E8"> /v Enabled /t REG_DWORD /d </span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8"> /f /reg:</span><span style="color:#79B8FF">64</span></span></code></pre>
+<h3 id="powershelladmin">powershell(admin)</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cmd"><code><span class="line"><span style="color:#E1E4E8">reg </span><span style="color:#79B8FF">add</span><span style="color:#E1E4E8"> HKLM\SOFTWARE\Microsoft\.NETFramework\v4</span><span style="color:#79B8FF">.0.30319</span><span style="color:#E1E4E8"> /v SystemDefaultTlsVersions /t REG_DWORD /d </span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8"> /f /reg:</span><span style="color:#79B8FF">64</span></span>
+<span class="line"><span style="color:#E1E4E8">reg </span><span style="color:#79B8FF">add</span><span style="color:#E1E4E8"> HKLM\SOFTWARE\Microsoft\.NETFramework\v4</span><span style="color:#79B8FF">.0.30319</span><span style="color:#E1E4E8"> /v SystemDefaultTlsVersions /t REG_DWORD /d </span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8"> /f /reg:</span><span style="color:#79B8FF">32</span></span></code></pre>
+<ul>
+<li>pmc(Package Manager Console) and powershell</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>[Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bOR [Net.SecurityProtocolType]::Tls12</span></span></code></pre>
+<p>Note:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>In Windows Server 2012 R2, you need to enter this command in PMC before using "Manage NuGet Packages".</span></span></code></pre>
+<h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://devblogs.microsoft.com/dotnet/deprecating-tls-1-0-and-1-1-on-nuget-org/">Deprecating TLS 1.0 and 1.1 on NuGet.org</a></li>
+</ul>  <footer> <a href="https://tdtc-hrb.github.io/blog-frontend">blog-frontend</a> <a href="https://tdtc-hrb.github.io/com-vc">com-vc</a> <a href="https://tdtc-hrb.github.io/css-tws">css-tws</a> <a href="https://tdtc-hrb.github.io/ops-win">ops-win</a> </footer> </body></html>

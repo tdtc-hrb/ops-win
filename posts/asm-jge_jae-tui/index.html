@@ -1,0 +1,66 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v6.2.1"><title>Instruction-set: jae and jge</title></head> <body> <h1>Instruction-set: jae and jge</h1>  <p><em>edits.asm - tv2.0</em></p> <p>2026-01-16</p> <p>Written by: xiaobin</p> <p>JAE, Jump if Above or Equal, should be used when comparing unsigned numbers.</p>
+<p>JGE, Jump if Greater or Equal, should be used when comparing signed numbers.</p>
+<h3 id="jae">JAE</h3>
+<p>Jump If Above or Equal</p>
+<p>JAE short-label<br>
+Logic:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>    Jump if CF = 0</span></span></code></pre>
+<p>Used after a CMP or SUB instruction, JAE transfers control to short-label
+if the first operand (which should be unsigned) was greater than or equal to the second operand (also unsigned).
+The target of the jump must be within -128 to +127 bytes of the next instruction.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Operands</th><th>Clocks</th><th>Transfers</th><th>Bytes</th><th>Example</th></tr></thead><tbody><tr><td>short-label</td><td>16 or 4</td><td>-</td><td>2</td><td>JAE ABOVE_EQUAL</td></tr></tbody></table>
+<p>Note: JNB (Jump Not Below) is the same instruction as JAE.</p>
+<h3 id="jge">JGE</h3>
+<p>Jump If Greater or Equal</p>
+<p>JGE short-label
+Logic:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Jump if SF = OF</span></span></code></pre>
+<p>Used after a CMP or SUB instruction, JGE transfers control to short- label
+if the first operand is greater than or equal to the second. (Both operands are treated as signed numbers.)
+The target of the jump must be within -128 to +127 bytes of the next instruction.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Operands</th><th>Clocks</th><th>Transfers</th><th>Bytes</th><th>Example</th></tr></thead><tbody><tr><td>short-label</td><td>16 or 4</td><td>-</td><td>2</td><td>JGE GREATER_EQUAL</td></tr></tbody></table>
+<p>Note: JNL, Jump if Not Less, is the same instruction as JGE.</p>
+<h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://www.dei.isep.ipp.pt/~nsilva/ensino/ArqC/ArqC1998-1999/nguide/ng-j.htm">“J” Instructions</a></li>
+<li><a href="http://www.sigala.it/sergio/tvision/source/tv2orig.zip">Borland Original Turbo Vision 2.0.3 code</a></li>
+<li><a href="https://crates.io/crates/turbo-vision">turbo vision</a></li>
+</ul>  <footer> <a href="https://tdtc-hrb.github.io/blog-frontend">blog-frontend</a> <a href="https://tdtc-hrb.github.io/com-vc">com-vc</a> <a href="https://tdtc-hrb.github.io/css-tws">css-tws</a> <a href="https://tdtc-hrb.github.io/ops-win">ops-win</a> </footer> </body></html>

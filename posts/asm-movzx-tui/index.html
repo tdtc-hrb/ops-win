@@ -1,0 +1,58 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v6.2.1"><title>Instruction-set: movzx</title></head> <body> <h1>Instruction-set: movzx</h1>  <p><em>Fix crash when editing text - tui</em></p> <p>2026-01-16</p> <p>Written by: xiaobin</p> <p><img src="https://github.com/tdtc-hrb/csdn/raw/master/images/figure2_asm.png" alt="Figure 2: Example of a single 64-bit GPR extended from the 8080 ISA.">
+from <a href="https://sonictk.github.io/asm_tutorial/">General-purpose registers</a></p>
+<h3 id="fix-crash-when-editing-text---editsasm">Fix crash when editing text - <a href="https://github.com/magiblot/tvision/commit/af1e40f1f1cdfabf4ad3c9a69412be411f8c5515">edits.asm</a></h3>
+<p>Amazing. The assembly function lineEnd, which searches for a carriage return in the current line,
+uses the REPNE instruction which relies on the (E)CX register to stop iterating.
+When they wrote this function in 32-bit assembly, though, they forgot about the upper half of ECX.
+Therefore, if the upper half of ECX was different from zero, REPNE would keep iterating even if CX was zero, which is how it worked in 16-bit.</p>
+<p>For some reason (either due to a huge amount of luck,
+or because they knew too well what the program was doing) this still worked if the assembly version of TVWRITE was in use;
+the assumption that ECX&#x3C;31..16> equals zero is no longer true when using the new CPP version.
+This made me initially believe this was a bug in the code I wrote, but it is not.</p>
+<ul>
+<li>ln252 - old</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>ELSE        ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;32-bit;;;;;;;;;;;;;;;;;;;;;;;;;;</span></span>
+<span class="line"><span>        USES    ESI, EDI, EBX</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>        MOV     ESI, DWORD PTR [thisPtr]</span></span>
+<span class="line"><span>        MOV     EBX, [ESI+TEditorBuffer]</span></span>
+<span class="line"><span>        MOVZX   EDI, WORD PTR [P]</span></span>
+<span class="line"><span>        MOV     AL, 0DH</span></span>
+<span class="line"><span>        CLD</span></span>
+<span class="line"><span>        MOV     CX, [ESI+TEditorCurPtr]</span></span>
+<span class="line"><span>        SUB     CX, DI</span></span>
+<span class="line"><span>        JBE   @@1</span></span>
+<span class="line"><span>        ADD     EDI, EBX</span></span>
+<span class="line"><span>        REPNE   SCASB</span></span>
+<span class="line"><span>        JE    @@2</span></span>
+<span class="line"><span>        MOVZX   EDI, WORD PTR [ESI+TEditorCurPtr]</span></span>
+<span class="line"><span>@@1:    MOV     CX, [ESI+TEditorBufLen]</span></span>
+<span class="line"><span>        SUB     CX, DI</span></span>
+<span class="line"><span>        JCXZ  @@4</span></span>
+<span class="line"><span>        MOVZX   EDX, WORD PTR [ESI+TEditorGapLen]</span></span>
+<span class="line"><span>        ADD     EBX, EDX</span></span>
+<span class="line"><span>        ADD     EDI, EBX</span></span>
+<span class="line"><span>        REPNE   SCASB</span></span>
+<span class="line"><span>        JNE   @@3</span></span>
+<span class="line"><span>@@2:    DEC     EDI</span></span>
+<span class="line"><span>@@3:    SUB     EDI, EBX</span></span>
+<span class="line"><span>@@4:    MOV     EAX, EDI</span></span>
+<span class="line"><span>        RET</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>ENDIF</span></span></code></pre>
+<p>changed 1(ln260):</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>        MOVZX   ECX, WORD PTR [ESI+TEditorCurPtr]</span></span>
+<span class="line"><span>        SUB     ECX, EDI</span></span></code></pre>
+<p>changed 2(ln267):</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>@@1:    MOVZX   ECX, WORD PTR [ESI+TEditorBufLen]</span></span>
+<span class="line"><span>        SUB     ECX, EDI</span></span></code></pre>
+<h3 id="movzx">movzx</h3>
+<p>If you have same-sized operands, you’re expected to use <i>mov</i>.</p>
+<p><i>movzx</i> and <i>movsx</i> are only intended to be used when the destination is wider than the source so there’s some actual Zero eXtension or Sign eXtension to do.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>movzx specifically wants the destination to be larger than the source.</span></span></code></pre>
+<h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Text-based_user_interface">Text-based user interface</a></li>
+<li><a href="https://stackoverflow.com/questions/67933514/why-doesnt-movzx-work-when-operands-have-the-same-size">Why doesn’t MOVZX work when operands have the same size?</a></li>
+</ul>  <footer> <a href="https://tdtc-hrb.github.io/blog-frontend">blog-frontend</a> <a href="https://tdtc-hrb.github.io/com-vc">com-vc</a> <a href="https://tdtc-hrb.github.io/css-tws">css-tws</a> <a href="https://tdtc-hrb.github.io/ops-win">ops-win</a> </footer> </body></html>
