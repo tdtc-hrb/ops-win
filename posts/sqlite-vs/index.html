@@ -1,20 +1,17 @@
-<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v6.2.2"><title>.net framework 4.6</title></head> <body> <h1>.net framework 4.6</h1>  <p><em>SQLite v1.0.112</em></p> <p>2026-05-07</p> <p>Written by: xiaobin</p> <p>The official website no longer provides the installation program.</p>
-<p>down <a href="https://system.data.sqlite.org/home/rchvdwnld/7727af784b0f153b">ZIP-src</a></p>
-<h2 id="install-visual-studio-2015">install visual studio 2015</h2>
-<ul>
-<li>use <a href="https://tdtc-hrb.github.io/csdn/post/ops_network_proxy">network proxy</a></li>
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v6.3.3"><title>.net framework 4.6</title></head> <body> <h1>.net framework 4.6</h1>  <p><em>SQLite v1.0.112</em></p> <p>2026-05-07</p> <p>Written by: xiaobin</p> <ul>
+<li>VC</li>
 </ul>
 <blockquote>
-<p>javascript_projectsystem.msi miss issue</p>
+<p>MFC is not required.</p>
 </blockquote>
-<h3 id="vssdk">VSSDK</h3>
 <ul>
-<li>You should see a tree view of custom features. Open Common Tools.
-You should see “Visual Studio Extensibility Tools” .
-<img src="https://learn.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2015/extensibility/media/vssdkinstall.png" alt=""></li>
-<li>Check Visual Studio Extensibility Tools , then click Next and continue the installation.</li>
+<li>VSSDK</li>
 </ul>
-<h2 id="build-the-systemdatasqlite-sds-binaries">build the System.Data.SQLite (“SDS”) binaries</h2>
+<blockquote>
+<p>SQLite.Designer is required during compilation.
+<img src="https://learn.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2015/extensibility/media/vssdkinstall.png" alt=""></p>
+</blockquote>
+<h2 id="automated-build---command-line">Automated Build - command line</h2>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cmd"><code><span class="line"><span style="color:#E1E4E8">cd </span><span style="color:#F97583">&#x3C;</span><span style="color:#E1E4E8">root</span><span style="color:#F97583">></span><span style="color:#E1E4E8">\Setup</span></span></code></pre>
 <ul>
 <li>build the managed-only binaries</li>
@@ -28,6 +25,16 @@ You should see “Visual Studio Extensibility Tools” .
 <li>build the binaries for x64</li>
 </ul>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>build.bat ReleaseNativeOnly x64</span></span></code></pre>
+<h2 id="manual-build---vs2019">Manual Build - VS2019</h2>
+<p>If you don’t have VS2015 installed, then build manually.</p>
+<p>Open “SQLite.NET.2015.sln” with VS2019.</p>
+<h3 id="about-sqlitenet2015sln-and-sqlitenet2015msbuildsln">About SQLite.NET.2015.sln and SQLite.NET.2015.MSBuild.sln</h3>
+<ul>
+<li>SQLite.NET.2015.sln<br>
+Provide for manual build</li>
+<li>SQLite.NET.2015.MSBuild.sln<br>
+Provide for automated building</li>
+</ul>
 <h2 id="inno">inno</h2>
 <ul>
 <li>Add App(iscc.exe) path to system path</li>
@@ -62,7 +69,9 @@ You should see “Visual Studio Extensibility Tools” .
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>bake_all.bat</span></span></code></pre>
 <h2 id="ref">Ref</h2>
 <ul>
-<li><a href="https://system.data.sqlite.org/home/doc/7727af784b0f153b/www/build.wiki">v1.0.112</a></li>
+<li><a href="https://system.data.sqlite.org/home/doc/branch-v1/www/build.wiki">Build Procedures</a></li>
+<li><a href="https://system.data.sqlite.org/home/info/7727af784b0f153b">v1.0.120.0</a></li>
+<li><a href="https://system.data.sqlite.org/home/info/0fadcbe4d2827d69">v1.0.105.2</a></li>
 <li><a href="https://stackoverflow.com/a/39130542">visual studio 2015 javascript_projectsystem</a></li>
 <li><a href="https://learn.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2015/extensibility/installing-the-visual-studio-sdk?view=vs-2015">Installing the Visual Studio SDK</a></li>
 <li><a href="https://www.visualstudioextensibility.com/downloads/vs-sdks/">Visual Studio SDKs</a></li>
