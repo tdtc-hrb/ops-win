@@ -1,0 +1,97 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v6.3.8"><title>编译sandboxie</title></head> <body> <h1>编译sandboxie</h1>  <p><em>使用vs2019/vs2022</em></p> <p>2026-05-26</p> <p>Written by: tdtc</p> <ul>
+<li>Sbox Driver</li>
+<li>Sbox Dll</li>
+<li>Sbie Control</li>
+</ul>
+<h2 id="sboxdrv">SboxDrv</h2>
+<p>wdk path:
+Sandbox32.props and Sandbox64.props:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>&#x3C;WDKPATH>\Program Files (x86)\Windows Kits\10&#x3C;/WDKPATH></span></span></code></pre>
+<h3 id="path">path</h3>
+<ul>
+<li>vs2019</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>10.0.19041.0</span></span></code></pre>
+<ul>
+<li>vs2022</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>10.0.26100.0</span></span></code></pre>
+<h4 id="include">include</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>$(WDKPATH)\Include\10.0.19041.0\km</span></span>
+<span class="line"><span>$(WDKPATH)\Include\10.0.19041.0\ucrt</span></span>
+<span class="line"><span>$(WDKPATH)\Include\10.0.19041.0\um</span></span></code></pre>
+<h4 id="library">library</h4>
+<ul>
+<li>x86</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>$(WDKPATH)\lib\10.0.19041.0\km\x86</span></span></code></pre>
+<ul>
+<li>x64</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>$(WDKPATH)\lib\10.0.19041.0\km\x64</span></span></code></pre>
+<h3 id="token-information-class">Token Information Class</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Error	C2365	'TokenIsAppContainer': redefinition; previous definition was 'enumerator'</span></span></code></pre>
+<ul>
+<li>add old ddk</li>
+</ul>
+<p>my_winnt.h:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>#ifdef OLD_DDK</span></span>
+<span class="line"><span>typedef enum _TOKEN_INFORMATION_CLASS2 {</span></span>
+<span class="line"><span>    TokenIsAppContainer = 29,</span></span>
+<span class="line"><span>    TokenCapabilities,</span></span>
+<span class="line"><span>    TokenAppContainerSid,</span></span>
+<span class="line"><span>    TokenAppContainerNumber,</span></span>
+<span class="line"><span>    TokenUserClaimAttributes,</span></span>
+<span class="line"><span>    TokenDeviceClaimAttributes,</span></span>
+<span class="line"><span>    TokenRestrictedUserClaimAttributes,</span></span>
+<span class="line"><span>    TokenRestrictedDeviceClaimAttributes,</span></span>
+<span class="line"><span>    TokenDeviceGroups,</span></span>
+<span class="line"><span>    TokenRestrictedDeviceGroups,</span></span>
+<span class="line"><span>    TokenSecurityAttributes,</span></span>
+<span class="line"><span>    TokenIsRestricted,</span></span>
+<span class="line"><span>    TokenProcessTrustLevel,</span></span>
+<span class="line"><span>    TokenPrivateNameSpace//,</span></span>
+<span class="line"><span>    //MaxTokenInfoClass  // MaxTokenInfoClass should always be the last enum</span></span>
+<span class="line"><span>} TOKEN_INFORMATION_CLASS2;</span></span>
+<span class="line"><span>#endif // OLD_DDK</span></span></code></pre>
+<h3 id="wcsnicmp">wcsnicmp</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Warning	C4996	'wcsnicmp': The POSIX name for this item is deprecated. </span></span>
+<span class="line"><span>Instead, use the ISO C and C++ conformant name: _wcsnicmp.</span></span></code></pre>
+<p>key_flt.c:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>_wcsnicmp</span></span></code></pre>
+<h3 id="stdio_common_vswprintf">stdio_common_vswprintf</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Error	LNK2001	unresolved external symbol ___stdio_common_vswprintf</span></span></code></pre>
+<p><a href="https://stackoverflow.com/a/67745800">add it to the compiler’s command line</a>:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>/D_NO_CRT_STDIO_INLINE</span></span></code></pre>
+<h2 id="sboxdll">SboxDll</h2>
+<ul>
+<li>afxres.h in resource.rc: Install MFC and ATL</li>
+</ul>
+<h3 id="wcsnicmp-1">wcsnicmp</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Error	LNK2001 unresolved external symbol __wcsnicmp</span></span></code></pre>
+<ul>
+<li><a href="https://stackoverflow.com/a/47148616">properties->Linker->Input->Additional Dependencies</a></li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>vcruntime.lib</span></span>
+<span class="line"><span>ucrt.lib</span></span></code></pre>
+<h2 id="sbiecontrol">SbieControl</h2>
+<p>Move the declaration of Common_RunStartExe() to a new header file.</p>
+<ul>
+<li>removed</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>apps/common/CommonUtils.h</span></span></code></pre>
+<ul>
+<li>add</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>apps/common/RunStartExe.h:</span></span></code></pre>
+<h3 id="common_runstartexe">Common_RunStartExe()</h3>
+<ul>
+<li>RunBrowser.cpp and MyApp.cpp</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>#include "apps/common/RunStartExe.h"</span></span></code></pre>
+<h3 id="commonutilsh">CommonUtils.h</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Error	C2065	'HINSTANCE': undeclared identifier</span></span></code></pre>
+<ul>
+<li>add</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>#include &#x3C;windows.h></span></span></code></pre>  <footer> <a href="https://tdtc-hrb.github.io/blog-frontend">blog-frontend</a> <a href="https://tdtc-hrb.github.io/com-vc">com-vc</a> <a href="https://tdtc-hrb.github.io/css-tws">css-tws</a> <a href="https://tdtc-hrb.github.io/ops-win">ops-win</a> </footer> </body></html>

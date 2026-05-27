@@ -1,19 +1,64 @@
-<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v6.3.7"><title>Desktop development with C++</title></head> <body> <h1>Desktop development with C++</h1>  <p><em>installation and configuration</em></p> <p>2026-05-21</p> <p>Written by: xiaobin</p> <ul>
-<li>The current main force is VC14: Visual Studio 2026</li>
-</ul>
-<h2 id="installation">installation</h2>
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v6.3.8"><title>Desktop development with C++</title></head> <body> <h1>Desktop development with C++</h1>  <p><em>installation and configuration</em></p> <p>2026-05-26</p> <p>Written by: xiaobin</p> <p>Recommendation:</p>
 <ul>
-<li>Desktop development with C++</li>
-<li>Windows SDK</li>
+<li>Use VS 2026 for development on Windows 10/11 versions higher than 28000; otherwise, use VS 2022.</li>
+<li>Use VS 2019 for Win7/8.1/Win10 version 1511.</li>
 </ul>
-<blockquote>
-<p>Windows 11 SDK (10.0.22621.0)</p>
-</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Windows</th><th>Latest build</th></tr></thead><tbody><tr><td>26H1</td><td>28000.2113</td></tr><tr><td>24H2</td><td>26100.8457</td></tr><tr><td>21H2</td><td>19044.7291</td></tr></tbody></table>
 <h3 id="desktop-development-with-c">Desktop development with C++</h3>
 <ul>
-<li>vs2026</li>
+<li>vs2022<br>
+MSVC v143 - VS 2022 C++ x64/x86 build tools(Latest)</li>
+<li>vs2026<br>
+MSVC Build Tools for x64/x86(Latest)</li>
+<li>vs2019<br>
+MSVC v142 - VS 2019 C++ x64/x86 build tools(Latest)</li>
 </ul>
-<p>MSVC Build Tools for x64/x86(Latest)</p>
+<h3 id="windows-sdk">Windows SDK</h3>
+<ul>
+<li>Windows 11 SDK (10.0.28000.1839)</li>
+<li>Windows 11 SDK (10.0.26100.0)</li>
+<li>Windows 10 SDK (10.0.19041.0)</li>
+</ul>
+<h3 id="windows-driver-kit---vs2022">Windows Driver Kit - vs2022+</h3>
+<ul>
+<li>Win SDK/WDK 10.0.22621.0</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Installation of Component.Microsoft.Windows.DriverKit failed. </span></span>
+<span class="line"><span>The extension has a lower version than required by Visual Studio. </span></span>
+<span class="line"><span>Please install the extension from Visual Studio Installer instead.</span></span></code></pre>
+<p>Windows 11(Arm) development is supported starting with VS2022.</p>
+<h4 id="step-1-install-visual-studio-2022">Step 1: Install Visual Studio 2022+</h4>
+<ul>
+<li>MFC</li>
+<li>ATL</li>
+<li>SDK</li>
+<li>Windows Driver Kit</li>
+</ul>
+<h4 id="step-2-install-the-wdk">Step 2: Install the WDK</h4>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/windows-hardware/drivers/other-wdk-downloads">Download previous versions of the WDK</a></li>
+</ul>
 <h2 id="configuration">configuration</h2>
 <ul>
 <li>Cmake</li>
