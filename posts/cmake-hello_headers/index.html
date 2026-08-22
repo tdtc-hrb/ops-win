@@ -1,33 +1,33 @@
-<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v6.3.8"><title>learn CMake - Locations</title></head> <body> <h1>learn CMake - Locations</h1>  <p><em>Hello Headers</em></p> <p>2026-01-24</p> <p>Written by: xiaobin</p> <ul>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v7.2.4"><title>learn CMake - Locations</title></head><body><h1>learn CMake - Locations</h1><p><em>Hello Headers</em></p><p>2026-01-24</p><p>Written by: xiaobin</p><ul>
 <li><a href="https://tdtc-hrb.github.io/ops-win/posts/clang-win/">Latest Clang for VSCode</a></li>
 </ul>
 <h3 id="locations"><a href="https://gitlab.kitware.com/cmake/community/-/wikis/doc/cmake/Useful-Variables#locations">Locations</a></h3>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th>Variable</th><th>Info</th></tr></thead><tbody><tr><td>CMAKE_CURRENT_SOURCE_DIR</td><td>The current source directory if using sub-projects and directories.</td></tr><tr><td>CMAKE_CURRENT_LIST_DIR</td><td>(since 2.8.3) this is the directory of the listfile currently being processed.</td></tr><tr><td>CMAKE_SOURCE_DIR</td><td>this is the directory which contains the top-level CMakeLists.txt, i.e. the top level source directory.</td></tr><tr><td>PROJECT_SOURCE_DIR</td><td>contains the full path to the root of your project source directory, i.e. to the nearest directory where CMakeLists.txt contains the PROJECT() command.</td></tr></tbody></table>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Info</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CMAKE_CURRENT_SOURCE_DIR</td>
+<td>The current source directory if using sub-projects and directories.</td>
+</tr>
+<tr>
+<td>CMAKE_CURRENT_LIST_DIR</td>
+<td>(since 2.8.3) this is the directory of the listfile currently being processed.</td>
+</tr>
+<tr>
+<td>CMAKE_SOURCE_DIR</td>
+<td>this is the directory which contains the top-level CMakeLists.txt, i.e. the top level source directory.</td>
+</tr>
+<tr>
+<td>PROJECT_SOURCE_DIR</td>
+<td>contains the full path to the root of your project source directory, i.e. to the nearest directory where CMakeLists.txt contains the PROJECT() command.</td>
+</tr>
+</tbody>
+</table>
 <h4 id="difference-between-cmake_current_source_dir-and-cmake_current_list_dir"><a href="https://stackoverflow.com/questions/15662497/difference-between-cmake-current-source-dir-and-cmake-current-list-dir">Difference between CMAKE_CURRENT_SOURCE_DIR and CMAKE_CURRENT_LIST_DIR</a></h4>
 <p>The variables CMAKE_CURRENT_SOURCE_DIR and CMAKE_CURRENT_LIST_DIR may refer to different directories
 for a CMake list file that is included by another file with the include command. E.g.,
@@ -49,7 +49,7 @@ Outer’s CMakeLists.txt has:</p>
 <p>Then in both of these CMakeLists files, CMAKE_SOURCE_DIR will refer to Outer’s source dir.
 But while PROJECT_SOURCE_DIR for Outer is also this same dir, this is not the case for Inner.
 Inner’s PROJECT_SOURCE_DIR is the subdirectory containing its CMakeLists.txt.</p>
-<p>This difference applies to all <code>PROJECT_&#x3C;var></code> vs <code>CMAKE_&#x3C;var></code> variables.</p>
+<p>This difference applies to all <code>PROJECT_&lt;var&gt;</code> vs <code>CMAKE_&lt;var&gt;</code> variables.</p>
 <h3 id="example">example</h3>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>cmake_minimum_required(VERSION 4.2)</span></span>
 <span class="line"><span></span></span>
@@ -67,4 +67,5 @@ Inner’s PROJECT_SOURCE_DIR is the subdirectory containing its CMakeLists.txt.<
 <h2 id="ref">Ref</h2>
 <ul>
 <li><a href="https://github.com/ttroy50/cmake-examples/tree/master/01-basic/B-hello-headers">hello-headers</a></li>
-</ul>  <footer> <a href="https://tdtc-hrb.github.io/blog-frontend">blog-frontend</a> <a href="https://tdtc-hrb.github.io/com-vc">com-vc</a> <a href="https://tdtc-hrb.github.io/css-tws">css-tws</a> <a href="https://tdtc-hrb.github.io/ops-win">ops-win</a> </footer> </body></html>
+</ul>
+<footer><a href="https://tdtc-hrb.github.io/blog-frontend">blog-frontend</a><a href="https://tdtc-hrb.github.io/com-vc">com-vc</a><a href="https://tdtc-hrb.github.io/css-tws">css-tws</a><a href="https://tdtc-hrb.github.io/ops-win">ops-win</a></footer></body></html>

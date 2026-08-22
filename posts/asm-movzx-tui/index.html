@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v6.3.8"><title>Instruction-set: movzx</title></head> <body> <h1>Instruction-set: movzx</h1>  <p><em>Fix crash when editing text - tui</em></p> <p>2026-01-16</p> <p>Written by: xiaobin</p> <p><img src="https://github.com/tdtc-hrb/csdn/raw/master/images/figure2_asm.png" alt="Figure 2: Example of a single 64-bit GPR extended from the 8080 ISA.">
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v7.2.4"><title>Instruction-set: movzx</title></head><body><h1>Instruction-set: movzx</h1><p><em>Fix crash when editing text - tui</em></p><p>2026-01-16</p><p>Written by: xiaobin</p><p><img src="https://github.com/tdtc-hrb/csdn/raw/master/images/figure2_asm.png" alt="Figure 2: Example of a single 64-bit GPR extended from the 8080 ISA.">
 from <a href="https://sonictk.github.io/asm_tutorial/">General-purpose registers</a></p>
 <h3 id="fix-crash-when-editing-text---editsasm">Fix crash when editing text - <a href="https://github.com/magiblot/tvision/commit/af1e40f1f1cdfabf4ad3c9a69412be411f8c5515">edits.asm</a></h3>
 <p>Amazing. The assembly function lineEnd, which searches for a carriage return in the current line,
@@ -7,7 +7,7 @@ When they wrote this function in 32-bit assembly, though, they forgot about the 
 Therefore, if the upper half of ECX was different from zero, REPNE would keep iterating even if CX was zero, which is how it worked in 16-bit.</p>
 <p>For some reason (either due to a huge amount of luck,
 or because they knew too well what the program was doing) this still worked if the assembly version of TVWRITE was in use;
-the assumption that ECX&#x3C;31..16> equals zero is no longer true when using the new CPP version.
+the assumption that ECX&lt;31..16&gt; equals zero is no longer true when using the new CPP version.
 This made me initially believe this was a bug in the code I wrote, but it is not.</p>
 <ul>
 <li>ln252 - old</li>
@@ -55,4 +55,5 @@ This made me initially believe this was a bug in the code I wrote, but it is not
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Text-based_user_interface">Text-based user interface</a></li>
 <li><a href="https://stackoverflow.com/questions/67933514/why-doesnt-movzx-work-when-operands-have-the-same-size">Why doesn’t MOVZX work when operands have the same size?</a></li>
-</ul>  <footer> <a href="https://tdtc-hrb.github.io/blog-frontend">blog-frontend</a> <a href="https://tdtc-hrb.github.io/com-vc">com-vc</a> <a href="https://tdtc-hrb.github.io/css-tws">css-tws</a> <a href="https://tdtc-hrb.github.io/ops-win">ops-win</a> </footer> </body></html>
+</ul>
+<footer><a href="https://tdtc-hrb.github.io/blog-frontend">blog-frontend</a><a href="https://tdtc-hrb.github.io/com-vc">com-vc</a><a href="https://tdtc-hrb.github.io/css-tws">css-tws</a><a href="https://tdtc-hrb.github.io/ops-win">ops-win</a></footer></body></html>

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v6.3.8"><title>Clang for WSL2</title></head> <body> <h1>Clang for WSL2</h1>  <p><em>Note that CLion does not support legacy WSL.</em></p> <p>2026-02-18</p> <p>Written by: tdtc</p> <ul>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v7.2.4"><title>Clang for WSL2</title></head><body><h1>Clang for WSL2</h1><p><em>Note that CLion does not support legacy WSL.</em></p><p>2026-02-18</p><p>Written by: tdtc</p><ul>
 <li><a href="https://tdtc-hrb.github.io/com-vc/posts/boost-thread/">example</a></li>
 <li>CMakeLists.txt</li>
 </ul>
@@ -36,10 +36,10 @@
 <span class="line"><span>sudo apt install apt-transport-https ca-certificates gnupg software-properties-common wget</span></span>
 <span class="line"><span> </span></span>
 <span class="line"><span># Add the Kitware signing key</span></span>
-<span class="line"><span>wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | sudo tee /usr/share/keyrings/kitware-archive-keyring.gpg >/dev/null</span></span>
+<span class="line"><span>wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2&gt;/dev/null | gpg --dearmor - | sudo tee /usr/share/keyrings/kitware-archive-keyring.gpg &gt;/dev/null</span></span>
 <span class="line"><span> </span></span>
 <span class="line"><span># Add the Kitware APT repository</span></span>
-<span class="line"><span>echo 'deb [signed-by=/usr/share/keyrings/kitware-archive-keyring.gpg] https://apt.kitware.com/ubuntu/ focal main' | sudo tee /etc/apt/sources.list.d/kitware.list >/dev/null</span></span>
+<span class="line"><span>echo 'deb [signed-by=/usr/share/keyrings/kitware-archive-keyring.gpg] https://apt.kitware.com/ubuntu/ focal main' | sudo tee /etc/apt/sources.list.d/kitware.list &gt;/dev/null</span></span>
 <span class="line"><span> </span></span>
 <span class="line"><span># Update the package list</span></span>
 <span class="line"><span>sudo apt update</span></span></code></pre>
@@ -60,4 +60,5 @@
 <ul>
 <li><a href="https://stackoverflow.com/a/41393896">Linking Boost thread library</a></li>
 <li><a href="https://www.jetbrains.com/help/clion/how-to-use-wsl-development-environment-in-product.html#wsl-general">Configure WSL</a></li>
-</ul>  <footer> <a href="https://tdtc-hrb.github.io/blog-frontend">blog-frontend</a> <a href="https://tdtc-hrb.github.io/com-vc">com-vc</a> <a href="https://tdtc-hrb.github.io/css-tws">css-tws</a> <a href="https://tdtc-hrb.github.io/ops-win">ops-win</a> </footer> </body></html>
+</ul>
+<footer><a href="https://tdtc-hrb.github.io/blog-frontend">blog-frontend</a><a href="https://tdtc-hrb.github.io/com-vc">com-vc</a><a href="https://tdtc-hrb.github.io/css-tws">css-tws</a><a href="https://tdtc-hrb.github.io/ops-win">ops-win</a></footer></body></html>

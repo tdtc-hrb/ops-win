@@ -1,0 +1,65 @@
+<!DOCTYPE html><meta charset="utf-8"><ul>
+<li>OS<br>
+Win1809(x64)</li>
+<li>VS2017(v15.9)</li>
+</ul>
+<h1 id="installation">Installation</h1>
+<p>down <a href="https://sourceforge.net/projects/nsis/files/NSIS%202/2.51/">v2.51</a></p>
+<h2 id="inetc"><a href="https://nsis.sourceforge.io/Inetc_plug-in">InetC</a></h2>
+<p>From Inetc.zip, copy \Plugins\x86-ansi\InetC.dll to your NSIS plugins folder (e.g. C:\Program Files (x86)\NSIS\Plugins)</p>
+<h2 id="ui">UI</h2>
+<ul>
+<li>System.nsh<br>
+Overwrite C:\Program Files (x86)\NSIS\Contrib\Modern UI\System.nsh with install\nsis_updates.zip\nsis\Contrib\Modern UI\System.nsh</li>
+<li>Languages<br>
+Copy language files from install\nsis_updates.zip\nsis\Contrib\Modern UI\Language files to</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>C:\Program Files (x86)\NSIS\Contrib\Modern UI\Language files</span></span></code></pre>
+<h2 id="iconv">Iconv</h2>
+<p>down <a href="https://sourceforge.net/projects/gnuwin32/files/libiconv/1.9.2-1/libiconv-1.9.2-1-bin.zip/download">libiconv-1.9.2-1-bin.zip</a>
+and <a href="https://sourceforge.net/projects/gnuwin32/files/libiconv/1.9.2-1/libiconv-1.9.2-1-dep.zip/download">libiconv-1.9.2-1-dep.zip</a></p>
+<p>location:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>C:\Users\tdtc\Documents\sandboxie\tools\iconv</span></span></code></pre>
+<p>These contain the 3 binaries that are required:</p>
+<ul>
+<li>Iconv.exe</li>
+<li>Libiconv2.dll</li>
+<li>Libintl3.dll</li>
+</ul>
+<h1 id="usage">usage</h1>
+<ul>
+<li>configure NSIS Project</li>
+<li>build Visual Studio Solution</li>
+<li>Generate installer file</li>
+</ul>
+<h2 id="project-file">project file</h2>
+<p>更改install\SandboxieVS.nsi.</p>
+<h3 id="arch">arch</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>!define _BUILDARCH		Win32</span></span>
+<span class="line"><span>;!define _BUILDARCH		x64</span></span></code></pre>
+<p>默认为32位</p>
+<h3 id="compatible-with-xp">Compatible with XP</h3>
+<p>移除“SystemCheck_Done_XP_2003”前面的”;“.</p>
+<p>Ln559&amp;Ln560:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>StrCmp $0 "5.1" SystemCheck_Done_XP_2003</span></span>
+<span class="line"><span>StrCmp $0 "5.2" SystemCheck_Done_XP_2003</span></span></code></pre>
+<p>Ln577:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>SystemCheck_Done_XP_2003:</span></span></code></pre>
+<h2 id="compile-sln">compile sln</h2>
+<p>编译vs项目文件，以生成application(exe, dll and sys file).</p>
+<p>location:</p>
+<ul>
+<li>x86</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Bin\Win32</span></span></code></pre>
+<ul>
+<li>x64</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Bin\x64</span></span></code></pre>
+<h2 id="exec-nsis">exec NSIS</h2>
+<p>In Explorer, Right-click \install\SandboxieVS.nsi and select “Compile NSIS Script”;<br>
+Generate SandboxieInstall32.exe or SandboxieInstall64.exe.</p>
+<h1 id="ref">Ref</h1>
+<ul>
+<li><a href="https://gitee.com/xiaobin80/sandboxie/blob/master/install/ReadMe.txt">sandboxie install</a></li>
+</ul>

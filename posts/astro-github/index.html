@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v6.3.8"><title>使用Astro在github上写blog</title></head> <body> <h1>使用Astro在github上写blog</h1>  <p><em>添加分页、blog article、deprecated feature</em></p> <p>2025-05-29</p> <p>Written by: tdtc</p> <p>Also see <a href="https://www.cnblogs.com/xiaobin-hlj80/p/12651114.html">使用hugo在gitee上写blog</a></p>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v7.2.4"><title>使用Astro在github上写blog</title></head><body><h1>使用Astro在github上写blog</h1><p><em>添加分页、blog article、deprecated feature</em></p><p>2025-05-29</p><p>Written by: tdtc</p><p>Also see <a href="https://www.cnblogs.com/xiaobin-hlj80/p/12651114.html">使用hugo在gitee上写blog</a></p>
 <h2 id="pagination">pagination</h2>
 <ul>
 <li><a href="https://github.com/ampmonteiro/astro-tutorial-blog-pagination">ampmonteiro</a></li>
@@ -36,15 +36,15 @@
 <ul>
 <li><code>[page].astro</code></li>
 </ul>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>&#x3C;a href="/blog">First&#x3C;/a></span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>&lt;a href="/blog"&gt;First&lt;/a&gt;</span></span></code></pre>
 <p>Replace with</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>&#x3C;a href={baseUrl} >First&#x3C;/a></span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>&lt;a href={baseUrl} &gt;First&lt;/a&gt;</span></span></code></pre>
 <ul>
 <li>index.astro</li>
 </ul>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>  &#x3C;a href="/blog/2">Next&#x3C;/a></span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>  &lt;a href="/blog/2"&gt;Next&lt;/a&gt;</span></span></code></pre>
 <p>Replace with</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>&#x3C;a href={baseUrl + '/page/2'} >First&#x3C;/a></span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>&lt;a href={baseUrl + '/page/2'} &gt;First&lt;/a&gt;</span></span></code></pre>
 <h2 id="blog-article">blog article</h2>
 <ul>
 <li>Required</li>
@@ -106,4 +106,5 @@ Use</li>
 <ul>
 <li>preview</li>
 </ul>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>npm run preview</span></span></code></pre>  <footer> <a href="https://tdtc-hrb.github.io/blog-frontend">blog-frontend</a> <a href="https://tdtc-hrb.github.io/com-vc">com-vc</a> <a href="https://tdtc-hrb.github.io/css-tws">css-tws</a> <a href="https://tdtc-hrb.github.io/ops-win">ops-win</a> </footer> </body></html>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>npm run preview</span></span></code></pre>
+<footer><a href="https://tdtc-hrb.github.io/blog-frontend">blog-frontend</a><a href="https://tdtc-hrb.github.io/com-vc">com-vc</a><a href="https://tdtc-hrb.github.io/css-tws">css-tws</a><a href="https://tdtc-hrb.github.io/ops-win">ops-win</a></footer></body></html>

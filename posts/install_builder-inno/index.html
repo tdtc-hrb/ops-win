@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v6.3.8"><title>Inno setup</title></head> <body> <h1>Inno setup</h1>  <p><em>Includes part of the source script</em></p> <p>2026-05-03</p> <p>Written by: xiaobin</p> <p>The setup script wizard is basically the same as <a href="https://en.wikipedia.org/wiki/Wise_Solutions">Wise</a>.</p>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v7.2.4"><title>Inno setup</title></head><body><h1>Inno setup</h1><p><em>Includes part of the source script</em></p><p>2026-05-03</p><p>Written by: xiaobin</p><p>The setup script wizard is basically the same as <a href="https://en.wikipedia.org/wiki/Wise_Solutions">Wise</a>.</p>
 <h3 id="flags">Flags</h3>
 <ul>
 <li>checkedonce</li>
@@ -19,8 +19,9 @@
 <li><a href="https://jrsoftware.org/ishelp/topic_runsection.htm">Run section</a></li>
 </ul>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>[Run]</span></span>
-<span class="line"><span>Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&#x26;', '&#x26;&#x26;')}}"; Flags: nowait postinstall skipifsilent unchecked</span></span></code></pre>
+<span class="line"><span>Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&amp;', '&amp;&amp;')}}"; Flags: nowait postinstall skipifsilent unchecked</span></span></code></pre>
 <h3 id="ref">Ref</h3>
 <ul>
 <li><a href="https://stackoverflow.com/questions/2622906/inno-setup-set-default-value-for-desktop-icon-check-box-to-true">Inno Setup: Set default value for desktop icon-check box to true</a></li>
-</ul>  <footer> <a href="https://tdtc-hrb.github.io/blog-frontend">blog-frontend</a> <a href="https://tdtc-hrb.github.io/com-vc">com-vc</a> <a href="https://tdtc-hrb.github.io/css-tws">css-tws</a> <a href="https://tdtc-hrb.github.io/ops-win">ops-win</a> </footer> </body></html>
+</ul>
+<footer><a href="https://tdtc-hrb.github.io/blog-frontend">blog-frontend</a><a href="https://tdtc-hrb.github.io/com-vc">com-vc</a><a href="https://tdtc-hrb.github.io/css-tws">css-tws</a><a href="https://tdtc-hrb.github.io/ops-win">ops-win</a></footer></body></html>
